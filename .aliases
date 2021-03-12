@@ -1,0 +1,7 @@
+alias l='ls -CF --color=auto'
+alias la='ls -A --color=auto'
+alias ll='ls -alF --color=auto'
+alias grep='grep --color=auto'
+alias vim='nvim'
+alias vi='nvim'
+alias dots='/usr/bin/git --git-dir=$HOME/repos/dotfiles --work-tree=$HOME'

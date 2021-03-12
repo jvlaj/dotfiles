@@ -1,0 +1,6 @@
+q
+tutorial
+help
+set status_display_program=~/.config/cmus/scripts/cmus-status.sh
+e
+f

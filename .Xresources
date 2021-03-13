@@ -86,10 +86,10 @@ Xft.dpi: 109
 !!URxvt.boldFont: xft:Iosevka:style=Bold:size=14
 !!URxvt.italicFont: xft:Iosevka:style=Italic:size=14
 !!URxvt.boldItalicfont: xft:Iosevka:style=Bold Italic:size=14
-*.font: xft:SF Mono:style=Regular:size=11,xft:Noto Serif CJK JP:style=SemiBold:size=11,xft:symbola:size=12:minspace=False
-*.boldFont: xft:SF Mono:style=Bold:size=11,xft:Noto Serif CJK JP:style=Black:size=11
-*.italicFont: xft:SF Mono:style=Regular Italic:size=11,xft:Noto Serif CJK JP:style=Italic:size=11
-*.boldItalicFont: xft:SF Mono:style=Bold Italic:size=11,xft:Noto Serif CJK JP:style=Bold Italic:size=11
+*.font: xft:SF Mono:style=Regular:size=12,xft:Noto Serif CJK JP:style=SemiBold:size=12,xft:symbola:size=12:minspace=False
+*.boldFont: xft:SF Mono:style=Bold:size=12,xft:Noto Serif CJK JP:style=Black:size=12
+*.italicFont: xft:SF Mono:style=Regular Italic:size=12,xft:Noto Serif CJK JP:style=Italic:size=12
+*.boldItalicFont: xft:SF Mono:style=Bold Italic:size=12,xft:Noto Serif CJK JP:style=Bold Italic:size=12
 *antialias: true
 *autohint: true
 URxvt.letterSpace: -1
@@ -124,8 +124,6 @@ URxvt.urlButton: 1
 
 !! Perls
 URxvt.perl-ext-common : default,keyboard-select,resize-font,url-select,bell-command,confirm-paste,prevent-close
-URxvt.keysym.A-Escape: perl:keyboard-select:activate
-URxvt.keyboard-select.clipboard: true
 
 URxvt.resize-font.step: 0.5
 

@@ -116,8 +116,6 @@ zinit load arzzen/calc.plugin.zsh
 
 # aliases
  source $HOME/.aliases
- alias dots='/usr/bin/git --git-dir=$HOME/repos/dotfiles --work-tree=$HOME
-
 
 autoload -Uz compinit
 compinit

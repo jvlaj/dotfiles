@@ -185,7 +185,7 @@ set completeopt=menuone,noinsert
 "		nmap <C-p> :call NotesPreview()<CR>
 "	endfunction
 
-nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+nmap <buffer><silent> <leader>i :call mdip#MarkdownClipboardImage()<CR>
 " there are some defaults for image directory and image name, you can change them
 " let g:mdip_imgdir = 'img'
 " let g:mdip_imgname = 'image'

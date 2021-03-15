@@ -16,42 +16,33 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'jakykong/vim-zim'
 Plug 'dbeniamine/todo.txt-vim'
-Plug 'vim-voom/VOoM'
+Plug 'vim-voom/voom'
 Plug 'mbbill/undotree'
-Plug 'Raimondi/delimitMate'
+"Plug 'raimondi/delimitmate'
 Plug 'rhysd/vim-clang-format', {'for' : ['c', 'cpp']}
-Plug 'honza/vim-snippets'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'conornewton/vim-pandoc-markdown-preview'
 Plug 'lervag/vimtex'
 Plug 'miyakogi/seiya.vim'
 Plug 'lilydjwg/colorizer'
-
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}} Plug
-"Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'} Plug
-"Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'} Plug
-"Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'} Plug
-"Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'} Plug
-"Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'} Plug
-"Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'} Plug
-"Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'} Plug
-"Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and stuff
-"Plug Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ycm-core/youcompleteme'
 
 call plug#end()
 
 let g:mapleader=" "
 
-"coc.vim options source $HOME/.config/nvim/plug-config/coc.vim
-
 " General Options
 set laststatus=1
-set number relativenumber tabstop=4 shiftwidth=4 softtabstop=4 noerrorbells smarttab smartindent expandtab autoindent
-set wrap breakindent
+set number 
+set relativenumber 
+set noerrorbells 
 set nu
 set smartcase
 set noswapfile
 set incsearch
+set expandtab
 
 set mouse=a
 
@@ -68,7 +59,7 @@ let g:deus_termcolors=256
 noremap <leader>g :Goyo<CR>:Limelight!!<CR>
 autocmd! User GoyoEnter Limelight 
 autocmd! User Goyo Leave Limelight! 
-let g:limelight_conceal_ctermfg = '240' 
+let g:limelight_conceal_ctermfg=240 
 "let g:templates_directory = '~/.config/nvim/templates'
 
 "seiya
@@ -82,6 +73,17 @@ let g:clang_format#auto_format=1
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
+
+" YouCompleteMe & ultisnips & snippets
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-j>'
+
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 
 " Undo
 set undodir=~/.vim/undodir
@@ -98,7 +100,11 @@ let g:colorizer_auto_filetype='css,html,conf,vim'
 
 " LaTeX
 set shellslash
-let g:tex_flavor='latex'
+let g:tex_flavor ='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode = 0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " Pandoc-markdown
 let g:pandoc#filetypes#pandoc_markdown = 0

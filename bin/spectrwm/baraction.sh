@@ -9,13 +9,7 @@ do
         echo -e "updates: $updates"
     }
 
-#do
-  # CPU
-#  cpu() {
-#	  mpstat 2 1 | awk 'END{print 100-$NF"%"}'
-#  }
-## CPU
-## DISK
+## HDD
 hdd() {
   hdd="$(df -h | awk 'NR==4{print $3, $5}')"
   echo -e "hdd: $hdd"
@@ -27,7 +21,7 @@ mem() {
   echo -e "$mem"
 }
 
-
+## CPU
 cpu() {
   read cpu a b c previdle rest < /proc/stat
   prevtotal=$((a+b+c+previdle))

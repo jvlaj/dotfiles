@@ -35,11 +35,11 @@ declare -A COMMANDS
 #LABELS["playlist"]=""
 
 # Twitch
-COMMANDS["Twitch"]='urxvtc -name Twitch -e reflex-curses'
+COMMANDS["Twitch"]='urxvtc -t Twitch -e reflex-curses'
 LABELS["Twitch"]=""
 
 # YouTube
-COMMANDS["YouTube"]='urxvtc -name YouTube -e ytfzf -D -t'
+COMMANDS["YouTube"]='alacritty -t YouTube -e ytfzf -D -t'
 LABELS["YouTube"]=""
 
 # show clipboard history

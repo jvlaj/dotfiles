@@ -102,7 +102,7 @@ URxvt.saveline: 2048
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.depth: 32
-URxvt.background: [80]#2a2a2a
+URxvt.background: [85]#2a2a2a
 URxvt.urgentOnBell: true
 URxvt.visualBell: false
 URxvt.bell-command: notify-send -h string:x-canonical-private-synchronous:urxvtbell -i bell "urxvt" "bell"

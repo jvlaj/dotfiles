@@ -6,6 +6,7 @@ syntax on
 
 call plug#begin('~/.local/share/nvim/site/autoload/')
 
+Plug 'rayes0/sayo/Vim/sayo.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'reedes/vim-pencil'
@@ -28,6 +29,7 @@ Plug 'lilydjwg/colorizer'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ycm-core/youcompleteme'
+"Plug 'ervandew/supertab'
 
 call plug#end()
 
@@ -42,7 +44,6 @@ set nu
 set smartcase
 set noswapfile
 set incsearch
-set expandtab
 
 set mouse=a
 
@@ -75,15 +76,18 @@ let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
 
 " YouCompleteMe & ultisnips & snippets
+let g:ycm_filetype_blacklist = {}
+
+" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-j>'
 
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-let g:UltiSnipsEditSplit="vertical"
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
+"autocmd! User UltiSnipsEnterFirstSnippet
 
 " Undo
 set undodir=~/.vim/undodir

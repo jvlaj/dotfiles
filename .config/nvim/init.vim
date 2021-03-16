@@ -6,7 +6,6 @@ syntax on
 
 call plug#begin('~/.local/share/nvim/site/autoload/')
 
-Plug 'rayes0/sayo/Vim/sayo.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'reedes/vim-pencil'
@@ -22,7 +21,7 @@ Plug 'mbbill/undotree'
 "Plug 'raimondi/delimitmate'
 Plug 'rhysd/vim-clang-format', {'for' : ['c', 'cpp']}
 Plug 'bfrg/vim-cpp-modern'
-Plug 'conornewton/vim-pandoc-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lervag/vimtex'
 Plug 'miyakogi/seiya.vim'
 Plug 'lilydjwg/colorizer'
@@ -67,6 +66,9 @@ let g:limelight_conceal_ctermfg=240
 let g:seiya_auto_enable=1
 let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 
+" markdown
+let g:mkdp_auto_start = 0
+
 "clangd
 let g:clang_format#auto_format=1
 
@@ -106,9 +108,10 @@ let g:colorizer_auto_filetype='css,html,conf,vim'
 set shellslash
 let g:tex_flavor ='latex'
 let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode = 0
+let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+let g:vimtex_compiler_progname='nvr'
 
 " Pandoc-markdown
 let g:pandoc#filetypes#pandoc_markdown = 0

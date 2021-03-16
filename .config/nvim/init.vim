@@ -18,17 +18,17 @@ Plug 'jakykong/vim-zim'
 Plug 'dbeniamine/todo.txt-vim'
 Plug 'vim-voom/voom'
 Plug 'mbbill/undotree'
-"Plug 'raimondi/delimitmate'
+Plug 'raimondi/delimitmate'
 Plug 'rhysd/vim-clang-format', {'for' : ['c', 'cpp']}
 Plug 'bfrg/vim-cpp-modern'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'iamcco/Markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lervag/vimtex'
 Plug 'miyakogi/seiya.vim'
 Plug 'lilydjwg/colorizer'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ycm-core/youcompleteme'
-"Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -68,6 +68,11 @@ let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 
 " markdown
 let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_browser = 'zathura'
+let g:mkdp_markdown_css = '~/node_modules/github-markdown-css'
+
 
 "clangd
 let g:clang_format#auto_format=1

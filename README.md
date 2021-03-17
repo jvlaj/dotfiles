@@ -14,10 +14,10 @@
 - <b>Calendar:</b> calcurse
 
 ### tried and true *i3-gaps*
-![i3](./img/i3-workspace-preview.png "i3-gaps")
+![i3](Pictures/previews/i3-workspace-preview.png "i3-gaps")
 
 ### the new and bold *spectrwm*
-![spectrwm](./img/spectrwm-workspace-preview.png "spectrwm")
+![spectrwm](Pictures/previews/spectrwm-workspace-preview.png "spectrwm")
 
 
 In its current state these dots are well functional, but still a *work-in-progress*. 
@@ -72,5 +72,6 @@ Then we can install our plugins:
 ```
 $ nvim +PlugInstall
 ```
+
 
 

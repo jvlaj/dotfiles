@@ -4,8 +4,7 @@ configuration {
 
 * {
   /* General */
-  icon-font:                            "SFMono Nerd Font 48";
-  // font is 50px wide at this size
+  icon-font:                            "material-design-icons 48";
   option-6-listview-spacing:            60px;
 
   menu-window-padding:                  50px;
@@ -18,7 +17,7 @@ configuration {
   fullscreen: false;
   anchor: center;
   location: center;
-  width: 1220px;
+  width: 1100px;
   height: 290px;
   x-offset: 0%;
   y-offset: 0%;

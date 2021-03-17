@@ -2,7 +2,7 @@
 
 ## Info
 - <b>Distro:</b> Arch Linux 
-- <b>WM:</b> spectrwm | i3-gaps
+- <b>WM:</b> spectrwm (daily driver) | i3-gaps
 - <b>Theme:</b> [sayo](https://github.com/rayes0/sayo/)
 - <b>Bar:</b> spectrwm bar | i3-bar
 - <b>Browser:</b> qutebrowser
@@ -14,12 +14,11 @@
 - <b>Calendar:</b> calcurse
 - <b>Font:</b> SF Mono | Iosevka
 
-### tried and true *i3-gaps*
-![i3](Pictures/previews/i3-workspace-preview.png "i3-gaps")
-
 ### the new and bold *spectrwm*
 ![spectrwm](Pictures/previews/spectrwm-workspace-preview.png "spectrwm")
 
+### tried and true *i3-gaps*
+![i3](Pictures/previews/i3-workspace-preview.png "i3-gaps")
 
 In its current state these dots are well functional, but still a *work-in-progress* in adjustment.
 

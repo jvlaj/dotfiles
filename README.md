@@ -22,7 +22,7 @@
 
 In its current state these dots are well functional, but still a *work-in-progress* in adjustment.
 
-Many of these dotfiles (*sayo theme, scripts, configurations*) are largely taken from and inspired by
+Some of these files (*sayo theme, some scripts & configuration*) are taken from and inspired by
 [Rayes0' dotfiles](http://github.com/rayes0/dotfiles).
 
 ### Packages

@@ -12,7 +12,7 @@ do
 ## HDD
 hdd() {
   hdd="$(df -h | awk 'NR==4{print $3, $5}')"
-  echo -e "hdd: $hdd"
+  echo -e "$hdd"
 }
 
 ## RAM
@@ -29,16 +29,20 @@ cpu() {
   read cpu a b c idle rest < /proc/stat
   total=$((a+b+c+idle))
   cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-  echo -e "cpu: $cpu%"
+  echo -e "cpu: $cpu"
 }
 
 
-  # BATTERY
-  #bat="$(cat /sys/class/power_supply/BAT0/capacity)%"
+## BATTERY
+bat() {	
+	bat0=$(cat /sys/class/power_supply/BAT0/capacity)
+	bat1=$(cat /sys/class/power_supply/BAT1/capacity)
   #bat_state="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | tr -d "[:space:]" | cut -c 7-)"
   #if [ "$bat_state" = "charging" ]; then
   #    bat="$bat ($bat_state)"
   #fi
+  echo -e "bat: $bat0 + $bat1"
+}
 
   # VOLUME
 #  vol() {
@@ -66,7 +70,7 @@ vol() {
 	  caf="☕"
   fi
 
-  echo "$(updates) | $(vol)% | $(cpu) | $(mem) | $(hdd)"
+  echo "$(updates) | $(vol)% | $(cpu) | $(mem) | $(hdd) | $(bat)"
   sleep 1.5
 done
 

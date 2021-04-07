@@ -2,12 +2,10 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 
-
-
-
 #QT scaling
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export "QT_SCREEN_SCALE_FACTORS=1;1" 
+#export PATH=/home/jason/doom.d/bin
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -116,6 +114,14 @@ zinit load arzzen/calc.plugin.zsh
 
 # aliases
  source $HOME/.aliases
+
+# functions
+my-backward-delete-word() {
+    local WORDCHARS=${WORDCHARS/\//}
+    zle backward-delete-word
+}
+zle -N my-backward-delete-word
+bindkey '^W' my-backward-delete-word
 
 autoload -Uz compinit
 compinit

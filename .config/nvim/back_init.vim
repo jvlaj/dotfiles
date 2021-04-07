@@ -6,13 +6,12 @@ syntax on
 
 call plug#begin('~/.local/share/nvim/site/autoload/')
 
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'reedes/vim-pencil'
 Plug 'preservim/nerdtree'
 Plug 'vim-latex/vim-latex'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'lingnand/pandoc-preview.vim'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'jakykong/vim-zim'
 Plug 'dbeniamine/todo.txt-vim'
@@ -20,6 +19,7 @@ Plug 'vim-voom/voom'
 Plug 'mbbill/undotree'
 Plug 'raimondi/delimitmate'
 Plug 'rhysd/vim-clang-format', {'for' : ['c', 'cpp']}
+Plug 'https://github.com/kana/vim-operator-user'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'iamcco/Markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lervag/vimtex'
@@ -29,6 +29,7 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ycm-core/youcompleteme'
 Plug 'tpope/vim-surround'
+Plug 'kevinhwang91/rnvimr'
 
 call plug#end()
 
@@ -38,8 +39,8 @@ let g:mapleader=" "
 set laststatus=1
 set number 
 set relativenumber 
-set noerrorbells 
 set nu
+set ignorecase
 set smartcase
 set noswapfile
 set incsearch
@@ -55,19 +56,12 @@ let g:deus_termcolors=256
 
 " Plugin Options 
 
-" goyo.vim & limeligh.vim
-noremap <leader>g :Goyo<CR>:Limelight!!<CR>
-autocmd! User GoyoEnter Limelight 
-autocmd! User Goyo Leave Limelight! 
-let g:limelight_conceal_ctermfg=240 
-"let g:templates_directory = '~/.config/nvim/templates'
-
 "seiya
 let g:seiya_auto_enable=1
 let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 
 " markdown
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
 let g:mkdp_browser = 'qutebrowser'
@@ -76,11 +70,17 @@ let g:mkdp_markdown_css = '~/node_modules/github-markdown-css'
 
 "clangd
 let g:clang_format#auto_format=1
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Stroustrup"}
 
 "vim-cpp-modern
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
-let g:cpp_simple_highlight = 1
+"let g:cpp_simple_highlight = 1
 
 " YouCompleteMe & ultisnips & snippets
 let g:ycm_filetype_blacklist = {}
@@ -118,19 +118,6 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_progname='nvr'
 
-" Pandoc-markdown
-let g:pandoc#filetypes#pandoc_markdown = 0
-let g:pandoc#folding#fold_yaml = 1
-let g:pandoc#syntax#conceal#blacklist = ["dashes", "atx"]
-
-" Pandoc Preview plugin
-"let g:pandoc_preview_pdf_cmd="zathura"
-"nnoremap <leader>v :PandocPreview<cr>
-let g:md_pdf_viewer="zathura"
-let g:vimtex_view_method = "zathura"
-
-" STATUSLINE
-
 set laststatus=1
 let s:hidden_all = 0
 function! ToggleHiddenAll()
@@ -160,8 +147,7 @@ noremap <leader>h :wincmd h<CR>
 noremap <leader>j :wincmd j<CR>
 noremap <leader>k :wincmd k<CR>
 noremap <leader>l :wincmd l<CR>
-noremap <leader>f :FZF<CR>
-nnoremap <C-a> :call ToggleHiddenAll()<CR>
+noremap <leader>f :RnvimrToggle<CR>
     " FOLDING
 inoremap <F9> <C-O>za
 nnoremap <F9> za

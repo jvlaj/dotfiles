@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 set $term alacritty
-set $browser qutebrowser
+set $browser chromium
 
 # i3 SPECIFIC CONFIGURATION SETTINGS 
 
@@ -172,18 +172,16 @@ bar	{
 }
 
 bar 	{
-	output DP-1
+	output DP-2
 	position top
 }
 
 # gaps
-gaps inner 20
-gaps outer 20
-gaps horizontal 20
-gaps vertical 20
+gaps inner 8
+gaps outer 8
 
 # borders
-for_window[class=".*"] border pixel 4
+for_window[class=".*"] border pixel 2
 
 
 
@@ -199,17 +197,20 @@ workspace 5 output DP-4
 workspace 6 output DP-4
 workspace 7 output DP-4
 workspace 8 output DP-4
-workspace 9 output DP-1
-workspace 10 output DP-1
+workspace 9 output DP-2
+workspace 10 output DP-2
 
 
 # PROGRAMS WORKSPACE CONFIGURATIONS
 
 assign [class="$term"] 1
 assign [class="$browser"] 2
-assign[class="$term"instance="Calcurse"] 6
+assign[class="alacritty"instance="Calcurse"] 6
 assign [class="discord"] 9
-assign [class="weechat"] 10
+assign [class="Spotify" instance="Spotify Premium"] 9
+
+# PROGRAM CONFIGURATIONS
+for_window [class="ahoviewer"] floating enable
 
 
 # AUTOSTART
@@ -219,7 +220,6 @@ exec greenclip daemon
 exec $term
 exec $browser
 exec discord
-exec spotify
 exec alacritty -t Calcurse -e calcurse
 
 # screensaver
@@ -228,13 +228,16 @@ exec xset s on
 # dpms
 exec xset dpms 0 0 300
 
+# fix mouse acceleration
+exec /home/jason/bin/fix_mouse_acceleration.sh
+
 # CUSTOM PROGARM KEYBINDINGS
 
 bindsym $mod+f exec $term -t ranger -e ranger
 bindsym $mod+s exec pavucontrol
 bindsym $mod+shift+f exec $browser	
 bindsym $mod+c exec $term -t music -e cmus 
-bindsym $mod+n exec alacritty -t neovim -e nvim
+bindsym $mod+n exec emacs
 bindsym $mod+y exec keepmenu
 bindsym $mod+shift+o exec ~/bin/rofi-streams.sh
 bindsym $mod+o exec $term -t weechat -e weechat

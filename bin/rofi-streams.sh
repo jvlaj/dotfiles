@@ -35,7 +35,7 @@ declare -A COMMANDS
 #LABELS["playlist"]=""
 
 # Twitch
-COMMANDS["Twitch"]='urxvtc -t Twitch -e reflex-curses'
+COMMANDS["Twitch"]='alacritty -t Twitch -e reflex-curses'
 LABELS["Twitch"]=""
 
 # YouTube

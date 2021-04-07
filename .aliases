@@ -5,4 +5,6 @@ alias grep='grep --color=auto'
 alias vim='nvim'
 alias vi='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/repos/dotfiles --work-tree=$HOME'
-alias todo='todo.sh'
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation

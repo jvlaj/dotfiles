@@ -6,12 +6,12 @@
 - <b>Theme:</b> [sayo](https://github.com/rayes0/sayo/)
 - <b>Bar:</b> spectrwm bar | i3-bar
 - <b>Browser:</b> qutebrowser
-- <b>Editor:</b> neovim
+- <b>Editor:</b> neovim | doom emacs
 - <b>Terminal:</b> alacritty
 - <b>Launcher:</b> rofi
-- <b>Music Player:</b> cmus | spotify w/ spicetify
+- <b>Music Player:</b> cmus | spotifytui w/ spotifyd
 - <b>Notifications:</b> dunst
-- <b>Calendar:</b> calcurse
+- <b>Calendar:</b> calcurse w/ calcurse-caldav -> google calendar
 - <b>Font:</b> SF Mono | Iosevka 
 
 ### bold minimalism *spectrwm*

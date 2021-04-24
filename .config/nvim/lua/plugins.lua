@@ -1,10 +1,11 @@
 return require('packer').startup(function()
 
     -- packer
-	use {'wbthomason/packer.nvim', opt = true}
-
+    use {'wbthomason/packer.nvim', opt = true}
+    
     -- LSP and completion
 	use 'neovim/nvim-lspconfig'
+    use 'kabouzeid/nvim-lspinstall'
     use 'nvim-lua/completion-nvim'
 	use 'onsails/lspkind-nvim'
 
@@ -36,5 +37,14 @@ return require('packer').startup(function()
 
     -- colorschemes
 	use 'chriskempson/base16-vim'
+
+    -- colorschemes switcher
+    use {'xolox/vim-colorscheme-switcher', requires = {'xolox/vim-misc'}}
+
+    -- markdown & pdf
+    use 'vim-pandoc/vim-pandoc'
+    use 'vim-pandoc/vim-pandoc-syntax'
+    use 'lingnand/pandoc-preview.vim'
+    use 'ferrine/md-img-paste.vim'
 
 end)

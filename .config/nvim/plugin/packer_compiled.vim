@@ -56,6 +56,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
+  ["md-img-paste.vim"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/md-img-paste.vim"
+  },
   ["nlua.nvim"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/nlua.nvim"
@@ -67,6 +71,10 @@ _G.packer_plugins = {
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -85,6 +93,10 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/jason/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
+  ["pandoc-preview.vim"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/pandoc-preview.vim"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/plenary.nvim"
@@ -97,6 +109,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ["vim-colorscheme-switcher"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-colorscheme-switcher"
+  },
   ["vim-dispatch"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-dispatch"
@@ -104,6 +120,18 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-misc"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-misc"
+  },
+  ["vim-pandoc"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-pandoc"
+  },
+  ["vim-pandoc-syntax"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-pandoc-syntax"
   }
 }
 

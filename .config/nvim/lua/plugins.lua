@@ -1,50 +1,74 @@
 return require('packer').startup(function()
 
-    -- packer
-    use {'wbthomason/packer.nvim', opt = true}
-    
-    -- LSP and completion
-	use 'neovim/nvim-lspconfig'
-    use 'kabouzeid/nvim-lspinstall'
-    use 'nvim-lua/completion-nvim'
+        use {'wbthomason/packer.nvim', opt = true}
+
+        -- LSP and completion
+        use 'neovim/nvim-lspconfig'
+        use 'nvim-lua/completion-nvim'
 	use 'onsails/lspkind-nvim'
 
-    -- fuzzy finder
+        -- fuzzy finder
 	use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
+              
+        -- vim dispatch
+        use 'tpope/vim-dispatch'
+        
+        -- git
+        use 'tpope/vim-fugitive'
+	use 'airblade/vim-gitgutter'
+        use 'lewis6991/gitsigns.nvim'
+              
+        -- highlights
+        use 'nvim-treesitter/nvim-treesitter'
+              
+        -- file explorer
+        use 'kyazdani42/nvim-tree.lua'
+	use 'kyazdani42/nvim-web-devicons'
+              
+        -- colorschemes
+        use 'chriskempson/base16-vim'
+        use {'xolox/vim-colorscheme-switcher', requires = {'xolox/vim-misc'}}
+              
+        -- markdown & pdf
+        use 'vim-pandoc/vim-pandoc'
+        use 'vim-pandoc/vim-pandoc-syntax'
+        use 'lingnand/pandoc-preview.vim'
+        use 'ferrine/md-img-paste.vim'
 
-    -- statusbar, bufferline
-	use {'glepnir/galaxyline.nvim', branch = 'main', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
-	use 'akinsho/nvim-bufferline.lua'
+	-- for writing 
+	use 'reedes/vim-pencil'
+	use 'preservim/vim-lexical'
+	use 'preservim/vim-wordy'
 
-    -- lua dev
-    use 'tjdevries/nlua.nvim'
-    use 'euclidianAce/BetterLua.vim'
+	-- latex
+	use 'vim-latex/vim-latex'
+	use 'lervag/vimtex'
 
-    -- vim dispatch
-    use 'tpope/vim-dispatch'
+	-- undotree
+	use 'mbbill/undotree'
 
-    -- fugitive for git
-    use 'tpope/vim-fugitive'
+	-- snippets
+	use 'sirver/ultisnips'
+	use 'honza/vim-snippets'
 
-    -- git history
-	use 'lewis6991/gitsigns.nvim'
+	-- vim-surround
+	use 'tpope/vim-surround'
 
-    -- programming highlights
-	use 'nvim-treesitter/nvim-treesitter'
+	-- easy motion
+	use 'easymotion/vim-easymotion'
 
-    -- file explorer
-	use 'kyazdani42/nvim-tree.lua'
+	-- lightline
+	use 'itchyny/lightline.vim'
 
-    -- colorschemes
-	use 'chriskempson/base16-vim'
+	-- sendtowindow
+	use 'karoliskoncevicius/vim-sendtowindow'
 
-    -- colorschemes switcher
-    use {'xolox/vim-colorscheme-switcher', requires = {'xolox/vim-misc'}}
+	-- startify
+	use 'mhinz/vim-startify'
 
-    -- markdown & pdf
-    use 'vim-pandoc/vim-pandoc'
-    use 'vim-pandoc/vim-pandoc-syntax'
-    use 'lingnand/pandoc-preview.vim'
-    use 'ferrine/md-img-paste.vim'
+	-- development
+		-- lua dev
+		use 'tjdevries/nlua.nvim'
+		use 'euclidianAce/BetterLua.vim'
 
 end)

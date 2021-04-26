@@ -1,6 +1,6 @@
 local utils = require('utils')
 
- -- clear highlights
+-- clear highlights
 utils.map('n', '<C-l>', '<cmd>noh<CR>')
 
 -- resize windows
@@ -16,3 +16,8 @@ utils.map('n', '<leader>tk', '<C-W>t<C-w>K', { noremap = true, silent = true } )
 -- fix last mispelled word to first listed correction while in insert
 utils.map('i', '<C-h>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = true } )
 
+-- tree
+utils.map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true} )
+
+-- undotree
+utils.map('n', '<leader>e', ':UndotreeToggle<CR>', { noremap = true, silent = true } )

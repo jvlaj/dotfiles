@@ -1,4 +1,4 @@
--- mapleader
+-- map leader
 vim.g.mapleader = ' '
 
 local fn = vim.fn
@@ -11,14 +11,18 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' 
 
--- settings
+-- defaults
 require('settings')
 
--- plugins
+-- install plugins
 require('plugins')
 
 -- keymappings
 require('keymappings')
+
+-- lsp server & autcompletion
+require('lsp_install')
+require('config')
 

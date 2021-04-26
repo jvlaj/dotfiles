@@ -5,7 +5,8 @@
 #QT scaling
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export "QT_SCREEN_SCALE_FACTORS=1;1" 
-#export PATH=/home/jason/doom.d/bin
+path+=('/home/jason/.local/bin')
+export PATH
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -137,3 +138,5 @@ zinit cdreplay -q   # -q is for quiet; actually run all the `compdef's saved bef
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -6,6 +6,7 @@
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export "QT_SCREEN_SCALE_FACTORS=1;1" 
 path+=('/home/jason/.local/bin')
+path+=('/home/jason/go/bin')
 export PATH
 
 ### Added by Zinit's installer
@@ -140,3 +141,16 @@ zinit cdreplay -q   # -q is for quiet; actually run all the `compdef's saved bef
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function lp () {
+    open=xdg-open   # this will open pdf file withthe default PDF viewer on KDE, xfce, LXDE and perhaps on other desktops.
+
+    ag -U -g ".pdf$" \
+    | fast-p \
+    | fzf --read0 --reverse -e -d $'\t'  \
+        --preview-window down:80% --preview '
+            v=$(echo {q} | tr " " "|"); 
+            echo -e {1}"\n"{2} | grep -E "^|$v" -i --color=always;
+        ' \
+    | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null $open > /dev/null 2> /dev/null
+}

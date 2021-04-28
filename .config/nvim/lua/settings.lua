@@ -22,7 +22,7 @@ utils.opt('o','splitright',true)
 utils.opt('b','shiftwidth',indent)
 utils.opt('b','smartindent',true)
 utils.opt('b','tabstop',indent)
-utils.opt('o','undofile',true)
+utils.opt('b','undofile',true)
 utils.opt('o','hidden',true)
 utils.opt('o','history',5000)
 

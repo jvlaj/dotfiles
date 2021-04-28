@@ -114,3 +114,4 @@ lspconfig.ccls.setup {
     };
   }
 }
+require'lspconfig'.cmake.setup{on_attach=require'completion'.on_attach}

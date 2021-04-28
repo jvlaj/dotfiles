@@ -79,6 +79,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/base16-vim"
   },
+  ["completion-nvim"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
@@ -131,6 +135,10 @@ _G.packer_plugins = {
   ["popup.nvim"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["seiya.vim"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/seiya.vim"
   },
   ["telescope.nvim"] = {
     loaded = true,

@@ -37,18 +37,22 @@
 *.color15: #bebebe
 
 !!XTerm
-XTerm.vt100.scrollBar: false
-XTerm*internalBorder: 30
+UXTerm.vt100.scrollBar: false
+UXTerm.vt100.locale: true
+UXTerm*internalBorder: 30
+UXTerm.termName: uxterm-256color
+UXTerm.vt100.backarrowKey: false
+UXTerm.ttyModes: erase ^?
+Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+UXTerm.vt100.faceName: SF Mono
+UXTerm*faceSize: 12
+UXTerm*renderFont: true
 
 !! DPI
 Xft.dpi: 109
 
-!! font
-!!*.font: xft:SF Mono:style=Regular:size=12, xft:Noto Serif CJK JP:style=SemiBold:size=12,xft:symbola:size=12:minspace=False
-!!*.boldFont: xft:SF Mono:style=Bold:size=12, xft:Noto Serif CJK JP:style=Black:size=12
-!!*.italicFont: xft:SF Mono:style=Regular Italic:size=12, xft:Noto Serif CJK JP:style=Italic:size=12
-!!*.boldItalicFont: xft:SF Mono:style=Bold Italic:size=12, xft:Noto Serif CJK JP:style=Bold Italic:size=12
-*antialias: true
+antialias: true
 *autohint: true
 
 !! Rofi

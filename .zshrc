@@ -154,3 +154,5 @@ function lp () {
         ' \
     | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null $open > /dev/null 2> /dev/null
 }
+
+alias luamake=/home/jason/lua-language-server/3rd/luamake/luamake

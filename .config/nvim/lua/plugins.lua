@@ -9,6 +9,9 @@ return require('packer').startup(function()
 
         -- fuzzy finder
 	use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
+
+	-- seiya
+	use {'miyakogi/seiya.vim'}
               
         -- vim dispatch
         use 'tpope/vim-dispatch'

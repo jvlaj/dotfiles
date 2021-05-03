@@ -43,11 +43,13 @@ UXTerm*internalBorder: 30
 UXTerm.termName: uxterm-256color
 UXTerm.vt100.backarrowKey: false
 UXTerm.ttyModes: erase ^?
-Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 UXTerm.vt100.faceName: SF Mono
 UXTerm*faceSize: 12
 UXTerm*renderFont: true
+UXTerm*vt100.translations: #override \
+Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+
 
 !! DPI
 Xft.dpi: 109

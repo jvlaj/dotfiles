@@ -21,7 +21,7 @@ return require('packer').startup(function()
 	use 'airblade/vim-gitgutter'
         use 'lewis6991/gitsigns.nvim'
               
-        -- highlights
+        -- tree-sitter
         use 'nvim-treesitter/nvim-treesitter'
               
         -- file explorer

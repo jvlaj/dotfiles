@@ -12,5 +12,4 @@
 - <b>Notifications:</b> dunst
 - <b>Font:</b> SF Mono | Iosevka 
 
-### bold minimalism *spectrwm*
 ![spectrwm](Pictures/previews/spectrwm-workspace-preview.png "spectrwm")

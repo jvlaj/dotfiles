@@ -5,6 +5,7 @@
 #QT scaling
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export "QT_SCREEN_SCALE_FACTORS=1;1" 
+export MANPAGER='nvim +Man!'
 path+=('/home/json/.local/bin')
 path+=('/home/json/go/bin')
 path+=('/home/json/bin')

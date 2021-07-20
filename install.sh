@@ -2,7 +2,7 @@
 
 ## packages
 
-pac_PKGS = "xorg-server nvidia zsh spectrwm yay keepassxc curl redshift nodejs npm git python3 python2 python-pip python2-pip zathura zathura-cb zathura-djvu zathura-pdf-poppler ranger dunst spotifyd rofi dmenu uxterm chromium qutebrowser neovim xset feh fcitx greenclip"
+pac_PKGS = "xorg-server nvidia zsh spectrwm yay keepassxc curl redshift nodejs npm git python3 python2 python-pip python2-pip zathura zathura-cb zathura-djvu zathura-pdf-poppler ranger dunst spotifyd rofi dmenu uxterm chromium qutebrowser neovim xset feh fcitx-mozc fcitx-configtool greenclip"
 aur_PKGS = "spotify-tui nerd-fonts-sf-mono nerd-fonts-iosevka rofi-greenclip"
 npm_PKGS = "neovim"
 pip_PKGS = "jedi flake8 neovim"

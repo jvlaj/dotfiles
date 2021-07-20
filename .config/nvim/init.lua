@@ -22,7 +22,7 @@ require('plugins')
 -- keymappings
 require('keymappings')
 
--- lsp server & autcompletion
+-- lsp server & plugin configs
 require('lsp_install')
 require('config')
 

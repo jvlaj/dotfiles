@@ -1,42 +1,42 @@
 return require('packer').startup(function()
 
-        use {'wbthomason/packer.nvim', opt = true}
+	use {'wbthomason/packer.nvim', opt = true}
 
-        -- LSP and completion
-        use 'neovim/nvim-lspconfig'
-        use 'nvim-lua/completion-nvim'
+	-- LSP and completion
+	use 'neovim/nvim-lspconfig'
+	use 'nvim-lua/completion-nvim'
 	use 'onsails/lspkind-nvim'
 
-        -- fuzzy finder
+	-- fuzzy finder
 	use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
 
 	-- seiya
 	use {'miyakogi/seiya.vim'}
-              
-        -- vim dispatch
-        use 'tpope/vim-dispatch'
-        
-        -- git
-        use 'tpope/vim-fugitive'
+		  
+	-- vim dispatch
+	use 'tpope/vim-dispatch'
+	
+	-- git
+	use 'tpope/vim-fugitive'
 	use 'airblade/vim-gitgutter'
-        use 'lewis6991/gitsigns.nvim'
-              
-        -- tree-sitter
-        use 'nvim-treesitter/nvim-treesitter'
-              
-        -- file explorer
-        use 'kyazdani42/nvim-tree.lua'
+	use 'lewis6991/gitsigns.nvim'
+		  
+	-- tree-sitter
+	use 'nvim-treesitter/nvim-treesitter'
+		  
+	-- file explorer
+	use 'kyazdani42/nvim-tree.lua'
 	use 'kyazdani42/nvim-web-devicons'
-              
-        -- colorschemes
-        use 'chriskempson/base16-vim'
-        use {'xolox/vim-colorscheme-switcher', requires = {'xolox/vim-misc'}}
-              
-        -- markdown & pdf
-        use 'vim-pandoc/vim-pandoc'
-        use 'vim-pandoc/vim-pandoc-syntax'
-        use 'lingnand/pandoc-preview.vim'
-        use 'ferrine/md-img-paste.vim'
+		  
+	-- colorschemes
+	use 'chriskempson/base16-vim'
+	use {'xolox/vim-colorscheme-switcher', requires = {'xolox/vim-misc'}}
+		  
+	-- markdown & pdf
+	use 'vim-pandoc/vim-pandoc'
+	use 'vim-pandoc/vim-pandoc-syntax'
+	use 'lingnand/pandoc-preview.vim'
+	use 'ferrine/md-img-paste.vim'
 
 	-- for writing 
 	use 'reedes/vim-pencil'

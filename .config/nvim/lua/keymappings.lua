@@ -21,3 +21,9 @@ utils.map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true} 
 
 -- undotree
 utils.map('n', '<leader>e', ':UndotreeToggle<CR>', { noremap = true, silent = true } )
+
+-- telescope
+utils.map('n', '<leader>ff', ':Telescope find_files<CR>', {noremap = true, silent = true} )
+utils.map('n', '<leader>fg', ':Telescope live_grep<CR>', {noremap = true, silent = true} )
+utils.map('n', '<leader>fb', ':Telescope buffers<CR>', {noremap = true, silent = true} )
+utils.map('n', '<leader>fh', ':Telescope help_tags<CR>', {noremap = true, silent = true} )

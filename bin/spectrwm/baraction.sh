@@ -3,7 +3,7 @@
 
 while true
 do 
-  # updates
+  ## updates
     updates()   {
         updates="$(pacman -Qu | wc -l)"
         echo -e "updates: $updates"

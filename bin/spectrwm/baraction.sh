@@ -5,7 +5,7 @@ while true
 do 
   ## updates
     updates()   {
-        updates="$(pacman -Qu | wc -l)"
+        updates="$(checkupdates | wc -l)"
         echo -e "updates: $updates"
     }
 

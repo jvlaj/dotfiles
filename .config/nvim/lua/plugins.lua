@@ -5,6 +5,7 @@ return require('packer').startup(function()
 	-- LSP and completion
 	use 'neovim/nvim-lspconfig'
 	use 'nvim-lua/completion-nvim'
+	--use 'hrsh7th/nvim-compe'
 	use 'onsails/lspkind-nvim'
 
 	-- fuzzy finder

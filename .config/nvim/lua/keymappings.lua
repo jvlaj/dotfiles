@@ -27,3 +27,6 @@ utils.map('n', '<leader>ff', ':Telescope find_files<CR>', {noremap = true, silen
 utils.map('n', '<leader>fg', ':Telescope live_grep<CR>', {noremap = true, silent = true} )
 utils.map('n', '<leader>fb', ':Telescope buffers<CR>', {noremap = true, silent = true} )
 utils.map('n', '<leader>fh', ':Telescope help_tags<CR>', {noremap = true, silent = true} )
+
+-- pandoc compile
+utils.map('n', '<leader>cc', ':PandocCompile<CR>', {noremap = true, silent = true} )

@@ -35,3 +35,4 @@ vim.cmd ('au FileType markdown nmap <buffer><silent> <leader>p :call mdip#Markdo
 --pandoc
 vim.cmd('au FileType markdown,md,tex,text call pencil#init()')
 vim.cmd('au FileType markdown,md,tex,text call lexical#init()')
+vim.g.pandoc_preview_pdf_cmd='zathura'

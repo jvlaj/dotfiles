@@ -3,8 +3,6 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 #QT scaling
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export "QT_SCREEN_SCALE_FACTORS=1;1" 
 export MANPAGER='nvim +Man!'
 path+=('/home/json/.yarn/bin')
 path+=('/home/json/.local/bin')

@@ -7,6 +7,7 @@
 - <b>Browser:</b> qutebrowser
 - <b>Editor:</b> neovim w/ nvim-lsp
 - <b>Terminal:</b> uxterm
+- <b>Shell:</b> fish (previously zsh)
 - <b>Launcher:</b> rofi | dmenu
 - <b>Music Player:</b> spotifytui w/ spotifyd
 - <b>Notifications:</b> dunst

@@ -25,4 +25,3 @@ require('keymappings')
 -- lsp server & plugin configs
 require('lsp_install')
 require('config')
-

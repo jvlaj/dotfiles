@@ -10,6 +10,7 @@ return require('packer').startup(function()
 
 	-- fuzzy finder
 	use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
+	use {'junegunn/fzf.vim'}
 
 	-- seiya
 	use {'miyakogi/seiya.vim'}
@@ -38,6 +39,7 @@ return require('packer').startup(function()
 	use 'vim-pandoc/vim-pandoc-syntax'
 	use 'lingnand/pandoc-preview.vim'
 	use 'ferrine/md-img-paste.vim'
+	use 'iamcco/markdown-preview.nvim'
 
 	-- for writing 
 	use 'reedes/vim-pencil'

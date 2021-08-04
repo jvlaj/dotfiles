@@ -49,3 +49,11 @@ local on_attach = function(client, bufnr)
 		enable = true
 		},
 	}
+
+	require 'lspconfig'.zeta_note.setup {
+		on_attach = on_attach,
+		cmd = {'/home/json/.local/bin/zeta-note-linux'},
+		settings = {
+			filetypes = { "markdown", "md" }
+		}
+	}

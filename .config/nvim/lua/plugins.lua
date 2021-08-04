@@ -33,6 +33,7 @@ return require('packer').startup(function()
 	-- colorschemes
 	use 'chriskempson/base16-vim'
 	use {'xolox/vim-colorscheme-switcher', requires = {'xolox/vim-misc'}}
+	use 'dracula/vim'
 		  
 	-- markdown & pdf
 	use 'vim-pandoc/vim-pandoc'
@@ -74,4 +75,6 @@ return require('packer').startup(function()
 		use 'tjdevries/nlua.nvim'
 		use 'euclidianAce/BetterLua.vim'
 
+	-- colorschemes
+	use 'rafi/awesome-vim-colorschemes'
 end)

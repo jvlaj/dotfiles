@@ -37,13 +37,14 @@ vim.g.mkdp_browser = 'firefox'
 
 -- pandoc
 vim.g.pandoc_preview_pdf_cmd='zathura'
-vim.g["pandoc#syntax#conceal#use"] = 2
+vim.g["pandoc#syntax#conceal#use"] = 3
 --vim.cmd('au BufWritePost,FileWritePost *.md, execute ":PandocCompile"')
 
 -- writing
 vim.cmd('au FileType markdown,md,tex,text call pencil#init()')
 vim.cmd('au FileType markdown,md,tex,text call lexical#init()')
+vim.g["pencil#wrapModeDefault"] = "soft"
 vim.g["pencil#concealcursor"] = "c"
-vim.g["pencil#conceallevel"] = 2
+vim.g["pencil#conceallevel"] = 3
 vim.g["pencil#cursorwrap"] = 1
 

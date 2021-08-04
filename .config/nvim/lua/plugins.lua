@@ -66,9 +66,6 @@ return require('packer').startup(function()
 	-- lightline
 	use 'itchyny/lightline.vim'
 
-	-- sendtowindow
-	use 'karoliskoncevicius/vim-sendtowindow'
-
 	-- startify
 	use 'mhinz/vim-startify'
 

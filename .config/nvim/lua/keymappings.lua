@@ -32,4 +32,4 @@ utils.map('n', '<leader>fh', ':Telescope help_tags<CR>', {noremap = true, silent
 utils.map('n', '<leader>cc', ':PandocCompile<CR>', {noremap = true, silent = true} )
 
 -- snippets
-utils.map('n', '<C-m>', 'Snippets<CR>', {noremap = true, silent = true} )
+--utils.map('n', '<C-m>', ':Snippets<CR>', {noremap = true, silent = true} )

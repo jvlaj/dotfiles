@@ -20,7 +20,7 @@ utils.map('i', '<C-h>', '<c-g>u<Esc>[s1z=`]a<c-g>u', { noremap = true, silent = 
 utils.map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true} )
 
 -- undotree
-utils.map('n', '<leader>e', ':UndotreeToggle<CR>', { noremap = true, silent = true } )
+utils.map('n', '<C-e>', ':UndotreeToggle<CR>', { noremap = true, silent = true } )
 
 -- telescope
 utils.map('n', '<leader>ff', ':Telescope find_files<CR>', {noremap = true, silent = true} )

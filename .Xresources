@@ -43,10 +43,13 @@ UXTerm*internalBorder: 30
 UXTerm.termName: uxterm-256color
 UXTerm.vt100.backarrowKey: false
 UXTerm.ttyModes: erase ^?
-UXTerm.vt100.faceName: SF Mono
-UXTerm*faceSize: 14
+UXTerm*faceName: SFMono Regular Nerd Font Complete Mono
+!!UXTerm.vt100.faceName: "SFMono Regular Nerd Font Complete Mono"
+UXTerm*faceSize: 12
 UXTerm*renderFont: true
-UXTerm*vt100.translations: #override \
+UXTerm*vt100.translations: #override \n\
+Ctrl <Key> minus: smaller-vt-font() \n\
+Ctrl <Key> plus: larger-vt-font() \n\
 Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
 Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
 

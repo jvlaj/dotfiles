@@ -7,11 +7,12 @@ from libqtile import qtile
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
+from libqtile.layout.xmonad import MonadWide
 from libqtile.lazy import lazy
 from typing import List  # noqa: F401
 
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
-myTerm = "alacritty"  # My terminal of choice
+myTerm = "uxterm"  # My terminal of choice
 
 keys = [
     ### QTile Management
@@ -56,10 +57,10 @@ keys = [
     Key([mod], "f", lazy.spawn(myTerm+" -e ranger")),
 
     ### Neovim KeyChords
-##    KeyChord(["control"],"e", [
-##        Key([], "e", lazy.spawn("myTerm -T -e nvim")),
-##        Key([], "c", lazy.spawn("myTerm -T -e nvim ~/.config/"))
-##    ]),
+    KeyChord(["control"],"e", [
+        Key([], "e", lazy.spawn("myTerm -T -e nvim")),
+        Key([], "c", lazy.spawn("myTerm -T -e nvim ~/.config/"))
+    ]),
 ##
 ##    ### DMScripts KeyChords
 ##    KeyChord([mod], "d", [
@@ -105,6 +106,7 @@ layouts = [
     # layout.Matrix(**layout_theme),
     # layout.Zoomy(**layout_theme),
     layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
     layout.RatioTile(**layout_theme),
@@ -133,7 +135,7 @@ layouts = [
 
 colors = [["#2a2a2a", "#2a2a2a"],  # panel background
           ["#3a3a3a", "#3a3a3a"],  # background for current screen tab
-          ["#bebebe", "#637a8a"],  # font color for group names
+          ["#637a8a", "#bebebe"],  # font color for group names
           ["#aa8f7c", "#aa8f7c"],  # border line color for current tab
           ["#8b8f7e", "#8b8f7e"],  # border line color for 'other tabs' and color for 'odd widgets'
           ["#987a6b", "#987a6b"],  # color for the 'even widgets'

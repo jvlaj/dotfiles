@@ -58,30 +58,21 @@ keys = [
 
     ### Neovim KeyChords
     KeyChord(["control"],"e", [
-        Key([], "e", lazy.spawn("myTerm -T -e nvim")),
-        Key([], "c", lazy.spawn("myTerm -T -e nvim ~/.config/"))
+        Key([], "e", lazy.spawn(myTerm+" -T -e nvim")),
     ]),
-##
-##    ### DMScripts KeyChords
-##    KeyChord([mod], "d", [
-##        Key([], "e", lazy.spawn("/usr/bin/dm-confedit")),
-##        Key([], "i", lazy.spawn("/usr/bin/dm-maim")),
-##        Key([], "k", lazy.spawn("/usr/bin/dm-kill")),
-##        Key([], "m", lazy.spawn("/usr/bin/dm-man")),
-##        Key([], "s", lazy.spawn("/usr/bin/dm-websearch")),
-##    ])
 ]
 
 ### Workspaces
-group_names = [("WWW", {'layout': 'monadtall'}),
+group_names = [("WWW", {'layout': 'monadtall', 'matches':[Match(wm_class=["firefox", "Chromium"])]}),
                ("DEV", {'layout': 'monadtall'}),
                ("RANG", {'layout': 'monadtall'}),
                ("SYS", {'layout': 'monadtall'}),
-               ("CHAT", {'layout': 'monadtall'}),
-               ("CAL", {'layout': 'monadtall'}),
-               ("MUS", {'layout': 'monadtall'}),
-               ("VID", {'layout': 'monadtall'}),
-               ("STAT", {'layout': 'floating'})] ## static screen
+               ("CHAT", {'layout': 'monadtall', 'matches':[Match(wm_class=["discord"])]}),
+               ("CAL", {'layout': 'monadtall', 'matches':[Match(title=["calcurse /home/json"])]}),
+               ("MUS", {'layout': 'monadtall', 'matches':[Match(wm_class=["Spotify"])]}),
+               ("GAME", {'layout': 'monadtall', 'matches':[Match(wm_class=["Steam"])]}),
+               ("STAT", {'layout': 'monadwide', 'matches':[Match(wm_instance_class=["Navigator"])]})
+               ] 
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -171,7 +162,7 @@ def init_widgets_list():
                 foreground=colors[2],
             ),
             widget.GroupBox(
-                font=" SF Mono",
+                font="SF Mono",
                 fontsize=14,
                 margin_y=3,
                 margin_x=0,
@@ -204,7 +195,36 @@ def init_widgets_list():
                 foreground=colors[6],
                 padding=0
             ),
-            widget.Systray(
+            widget.TextBox(
+                text="🎧",
+                padding=2,
+                foreground=colors[2],
+                fontsize=14
+            ),
+ 
+            widget.Mpris2(
+                name='spotify',
+                objname='org.mpris.MediaPlayer2.spotify',
+                display_metadata=['xesam:title', 'xesam:artist'],
+                font="SF Mono",
+                foreground=colors[2],
+                scroll_chars=None,
+            ),
+            widget.Sep(
+                linewidth=0,
+                padding=40,
+                foreground=colors[2],
+            ),
+            widget.Clock(
+                foreground=colors[2],
+                format="%A, %B %d - %H:%M ",
+            ),
+            widget.Sep(
+                linewidth=0,
+                padding=20,
+                foreground=colors[2],
+            ),
+           widget.Systray(
                 padding=5
             ),
             widget.Sep(
@@ -212,47 +232,11 @@ def init_widgets_list():
                 padding=6,
                 foreground=colors[0],
             ),
-            widget.TextBox(
-                text='',
-                foreground=colors[4],
-                padding=0,
-                fontsize=37
-            ),
             widget.Net(
                 interface="enp0s31f6",
                 format='{down} ↓↑ {up}',
                 foreground=colors[2],
                 padding=5
-            ),
-            widget.TextBox(
-                text='',
-                foreground=colors[5],
-                padding=0,
-                fontsize=37
-            ),
-            widget.TextBox(
-                text=" 🌡 TEMP NOT SHOWN ",
-                padding=2,
-                foreground=colors[2],
-                fontsize=14
-            ),
-            # widget.ThermalSensor(
-            #          foreground = colors[2],
-            #          background = colors[5],
-            #          threshold = 90,
-            #          padding = 5
-            #          ),
-            widget.TextBox(
-                text='',
-                foreground=colors[4],
-                padding=0,
-                fontsize=37
-            ),
-            widget.TextBox(
-                text=" ⟳",
-                padding=2,
-                foreground=colors[2],
-                fontsize=14
             ),
             widget.CheckUpdates(
                 update_interval=1800,
@@ -260,12 +244,6 @@ def init_widgets_list():
                 display_format="{updates} Updates",
                 foreground=colors[2],
                 mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e sudo pacman -Syu')},
-            ),
-            widget.TextBox(
-                text='',
-                foreground=colors[5],
-                padding=0,
-                fontsize=37
             ),
             widget.TextBox(
                 text=" 🖬",
@@ -278,12 +256,6 @@ def init_widgets_list():
                 mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
                 padding=5
             ),
-            widget.TextBox(
-                text='',
-                foreground=colors[4],
-                padding=0,
-                fontsize=37
-            ),
            widget.TextBox(
                 text=" Vol:",
                 foreground=colors[2],
@@ -292,12 +264,6 @@ def init_widgets_list():
             widget.Volume(
                 foreground=colors[2],
                 padding=5
-            ),
-            widget.TextBox(
-                text='',
-                foreground=colors[4],
-                padding=0,
-                fontsize=37
             ),
             widget.CurrentLayoutIcon(
                 custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
@@ -309,16 +275,7 @@ def init_widgets_list():
                 foreground=colors[2],
                 padding=5
             ),
-            widget.TextBox(
-                text='',
-                foreground=colors[5],
-                padding=0,
-                fontsize=37
-            ),
-            widget.Clock(
-                foreground=colors[2],
-                format="%A, %B %d - %H:%M "
-            ),
+            
         ]
 
     return widgets_list
@@ -329,7 +286,7 @@ def init_widgets_screen1():
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[8:14]               # Slicing removes unwanted widgets (systray) on Monitors 1,3
+    del widgets_screen2[10:20]               # Slicing removes unwanted widgets (systray) on Monitors 1,3
     return widgets_screen2                 # Monitor 2 will display all widgets in widgets_list
 
 def init_screens():
@@ -405,12 +362,14 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
+#groups.extend([
+#    Group ('www', spawn='chromium', layout='max', persist=False,
+#        matches=[Match=(wm_class=['Firefox', 'chromium', 'qutebrowser'])])])
 
 @hook.subscribe.startup_once
-def start_once():
+def autostart():
     home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
-
+    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
 # mailing lists, GitHub issues, and other WM documentation that suggest setting
@@ -420,4 +379,3 @@ def start_once():
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-

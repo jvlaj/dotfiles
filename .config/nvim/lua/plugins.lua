@@ -71,9 +71,15 @@ return require('packer').startup(function()
 	use 'mhinz/vim-startify'
 
 	-- development
-		-- lua dev
+		-- lua
 		use 'tjdevries/nlua.nvim'
 		use 'euclidianAce/BetterLua.vim'
+
+		-- kotlin
+		use 'udalov/kotlin-vim'
+
+		-- android
+		use 'hsanson/vim-android'
 
 	-- colorschemes
 	use 'rafi/awesome-vim-colorschemes'

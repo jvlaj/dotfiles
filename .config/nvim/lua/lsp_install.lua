@@ -47,7 +47,7 @@ local on_attach = function(client, bufnr)
 	require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true
-		},
+		}
 	}
 
 	require 'lspconfig'.zeta_note.setup {
@@ -57,3 +57,8 @@ local on_attach = function(client, bufnr)
 			filetypes = { "markdown", "md" }
 		}
 	}
+
+	require'lspconfig'.kotlin_language_server.setup {
+		on_attach = on_attach,
+		cmd = {"/home/json/repos/kotlin-language-server/server/build/install/server/bin/kotlin-language-server"},
+		}

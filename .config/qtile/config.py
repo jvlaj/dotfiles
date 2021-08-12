@@ -55,6 +55,28 @@ keys = [
     ### Applications
     Key([mod], "Return", lazy.spawn(myTerm+" -e fish")),
     Key([mod], "f", lazy.spawn(myTerm+" -e ranger")),
+    Key([mod], "n", lazy.spawn("nautilus")),
+    Key([mod], "p", lazy.spawn(myTerm+" -e passmenu")),
+
+    ### MediaKeys
+    Key([], 'XF86AudioPlay',
+        lazy.spawn(
+            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
+            '/org/mpris/MediaPlayer2 '
+            'org.mpris.MediaPlayer2.Player.PlayPause')),
+    Key([], 'XF86AudioStop',
+        lazy.spawn(
+            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
+            '/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop')),
+    Key([], 'XF86AudioNext',
+        lazy.spawn(
+            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
+            '/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next')),
+    Key([], 'XF86AudioPrev',
+        lazy.spawn(
+            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
+            '/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous')),
+
 
     ### Neovim KeyChords
     KeyChord(["control"],"e", [
@@ -126,7 +148,7 @@ layouts = [
 
 colors = [["#2a2a2a", "#2a2a2a"],  # panel background
           ["#3a3a3a", "#3a3a3a"],  # background for current screen tab
-          ["#637a8a", "#bebebe"],  # font color for group names
+          ["#bebebe", "#bebebe"],  # font color for group names
           ["#aa8f7c", "#aa8f7c"],  # border line color for current tab
           ["#8b8f7e", "#8b8f7e"],  # border line color for 'other tabs' and color for 'odd widgets'
           ["#987a6b", "#987a6b"],  # color for the 'even widgets'
@@ -195,6 +217,15 @@ def init_widgets_list():
                 foreground=colors[6],
                 padding=0
             ),
+            widget.Clock(
+                foreground=colors[2],
+                format="%A, %B %d - %H:%M ",
+            ),
+            widget.Sep(
+                linewidth=0,
+                padding=40,
+                foreground=colors[2],
+            ),
             widget.TextBox(
                 text="🎧",
                 padding=2,
@@ -210,29 +241,12 @@ def init_widgets_list():
                 foreground=colors[2],
                 scroll_chars=None,
             ),
-            widget.Sep(
-                linewidth=0,
-                padding=40,
-                foreground=colors[2],
-            ),
-            widget.Clock(
-                foreground=colors[2],
-                format="%A, %B %d - %H:%M ",
-            ),
-            widget.Sep(
+           widget.Sep(
                 linewidth=0,
                 padding=20,
                 foreground=colors[2],
             ),
-           widget.Systray(
-                padding=5
-            ),
-            widget.Sep(
-                linewidth=0,
-                padding=6,
-                foreground=colors[0],
-            ),
-            widget.Net(
+                widget.Net(
                 interface="enp0s31f6",
                 format='{down} ↓↑ {up}',
                 foreground=colors[2],
@@ -242,7 +256,7 @@ def init_widgets_list():
                 update_interval=1800,
                 distro="Arch_checkupdates",
                 display_format="{updates} Updates",
-                foreground=colors[2],
+                foreground=colors[3],
                 mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e sudo pacman -Syu')},
             ),
             widget.TextBox(
@@ -275,7 +289,9 @@ def init_widgets_list():
                 foreground=colors[2],
                 padding=5
             ),
-            
+            widget.Systray(
+                padding=5
+            ),
         ]
 
     return widgets_list
@@ -286,7 +302,8 @@ def init_widgets_screen1():
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[10:20]               # Slicing removes unwanted widgets (systray) on Monitors 1,3
+    del widgets_screen2[12:18]               # Slicing removes unwanted widgets (systray) 
+    del widgets_screen2[18:26]
     return widgets_screen2                 # Monitor 2 will display all widgets in widgets_list
 
 def init_screens():
@@ -368,8 +385,9 @@ focus_on_window_activation = "smart"
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~')
-    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
+
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
 # mailing lists, GitHub issues, and other WM documentation that suggest setting

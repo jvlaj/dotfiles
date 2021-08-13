@@ -3,6 +3,8 @@ import os
 import re
 import socket
 import subprocess
+from pathlib import Path
+from time import time
 from libqtile import qtile
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.command import lazy
@@ -57,6 +59,8 @@ keys = [
     Key([mod], "f", lazy.spawn(myTerm+" -e ranger")),
     Key([mod], "n", lazy.spawn("nautilus")),
     Key([mod], "p", lazy.spawn(myTerm+" -e passmenu")),
+        # Screenshots
+    Key([], 'Print', lazy.spawn("gnome-screenshot -i")),
 
     ### MediaKeys
     Key([], 'XF86AudioPlay',
@@ -91,7 +95,7 @@ group_names = [("WWW", {'layout': 'monadtall', 'matches':[Match(wm_class=["firef
                ("SYS", {'layout': 'monadtall'}),
                ("CHAT", {'layout': 'monadtall', 'matches':[Match(wm_class=["discord"])]}),
                ("CAL", {'layout': 'monadtall', 'matches':[Match(title=["calcurse /home/json"])]}),
-               ("MUS", {'layout': 'monadtall', 'matches':[Match(wm_class=["Spotify"])]}),
+               ("MUS", {'layout': 'monadtall', 'matches':[Match(wm_class=["spotify"])]}),
                ("GAME", {'layout': 'monadtall', 'matches':[Match(wm_class=["Steam"])]}),
                ("STAT", {'layout': 'monadwide', 'matches':[Match(wm_instance_class=["Navigator"])]})
                ] 
@@ -348,7 +352,6 @@ def switch_screens(qtile):
     i = qtile.screens.index(qtile.current_screen)
     group = qtile.screens[i - 1].group
     qtile.current_screen.set_group(group)
-
 
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),

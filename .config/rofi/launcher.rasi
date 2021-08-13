@@ -12,7 +12,7 @@ configuration {
 	bw: 0;
     fullscreen: false;
     show-icons: true;
-	terminal: "urxvt";
+	terminal: "uxterm";
 	sidebar-mode: true;
 }
 

@@ -13,6 +13,15 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
+# Always restore open sites when qutebrowser is reopened. Without this
+# option set, `:wq` (`:quit --save`) needs to be used to save open tabs
+# (and restore them), while quitting qutebrowser in any other way will
+# not save/restore the session. By default, this will save to the
+# session which was last loaded. This behavior can be customized via the
+# `session.default_name` setting.
+# Type: Bool
+c.auto_save.session = True
+
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
 # including IndexedDB, DOM storage, filesystem API, service workers, and
@@ -96,7 +105,7 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{w
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version} Edg/{upstream_browser_version}', 'https://accounts.google.com/*')
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:90.0) Gecko/20100101 Firefox/90.0', 'https://accounts.google.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -113,6 +122,42 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{w
 # JavaScript requires a restart.
 # Type: FormatString
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
+
+# List of URLs to host blocklists for the host blocker.  Only used when
+# the simple host-blocker is used (see `content.blocking.method`).  The
+# file can be in one of the following formats:  - An `/etc/hosts`-like
+# file - One host per line - A zip-file of any of the above, with either
+# only one file, or a file   named `hosts` (with any extension).  It's
+# also possible to add a local file or directory via a `file://` URL. In
+# case of a directory, all files in the directory are read as adblock
+# lists.  The file `~/.config/qutebrowser/blocked-hosts` is always read
+# if it exists.
+# Type: List of Url
+c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
+
+# Which method of blocking ads should be used.  Support for Adblock Plus
+# (ABP) syntax blocklists using Brave's Rust library requires the
+# `adblock` Python package to be installed, which is an optional
+# dependency of qutebrowser. It is required when either `adblock` or
+# `both` are selected.
+# Type: String
+# Valid values:
+#   - auto: Use Brave's ABP-style adblocker if available, host blocking otherwise
+#   - adblock: Use Brave's ABP-style adblocker
+#   - hosts: Use hosts blocking
+#   - both: Use both hosts blocking and Brave's ABP-style adblocker
+c.content.blocking.method = 'both'
+
+# List of URLs to ABP-style adblocking rulesets.  Only used when Brave's
+# ABP-style adblocker is used (see `content.blocking.method`).  You can
+# find an overview of available lists here:
+# https://adblockplus.org/en/subscriptions - note that the special
+# `subscribe.adblockplus.org` links aren't handled by qutebrowser, you
+# will instead need to find the link to the raw `.txt` file (e.g. by
+# extracting it from the `location` parameter of the subscribe URL and
+# URL-decoding it).
+# Type: List of Url
+c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
 
 # Load images automatically in web pages.
 # Type: Bool
@@ -154,6 +199,19 @@ config.set('content.notifications.enabled', False, 'https://www.youtube.com')
 #   - ask
 config.set('content.notifications.enabled', False, 'https://www.reddit.com')
 
+# Allow websites to register protocol handlers via
+# `navigator.registerProtocolHandler`.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.register_protocol_handler', True, 'https://mail.google.com?extsrc=mailto&url=%25s')
+
+# Open a new window for every tab.
+# Type: Bool
+c.tabs.tabs_are_windows = False
+
 # Search engines which can be used via the address bar.  Maps a search
 # engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
 # placeholder. The placeholder will be replaced by the search term, use
@@ -179,4 +237,9 @@ c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}', 'ddg': 'http
 # Type: Perc
 c.zoom.default = '110%'
 
-# Key Bindings
+# Default font size to use. Whenever "default_size" is used in a font
+# setting, it's replaced with the size listed here. Valid values are
+# either a float value with a "pt" suffix, or an integer value with a
+# "px" suffix.
+# Type: String
+c.fonts.default_size = '12pt'

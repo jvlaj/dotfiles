@@ -81,18 +81,13 @@ keys = [
             'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
             '/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous')),
 
-
-    ### Neovim KeyChords
-    KeyChord(["control"],"e", [
-        Key([], "e", lazy.spawn(myTerm+" -T -e nvim")),
-    ]),
 ]
 
 ### Workspaces
 group_names = [("WWW", {'layout': 'monadtall', 'matches':[Match(wm_class=["firefox", "Chromium"])]}),
                ("DEV", {'layout': 'monadtall'}),
                ("RANG", {'layout': 'monadtall'}),
-               ("SYS", {'layout': 'monadtall'}),
+               ("SYS", {'layout': 'monadtall', 'matches':[Match(title=["deluge"])]}),
                ("CHAT", {'layout': 'monadtall', 'matches':[Match(wm_class=["discord"])]}),
                ("CAL", {'layout': 'monadtall', 'matches':[Match(title=["calcurse /home/json"])]}),
                ("MUS", {'layout': 'monadtall', 'matches':[Match(wm_class=["spotify"])]}),
@@ -243,7 +238,9 @@ def init_widgets_list():
                 display_metadata=['xesam:title', 'xesam:artist'],
                 font="SF Mono",
                 foreground=colors[2],
-                scroll_chars=None,
+                scroll_chars=30,
+                scroll_wait_intervals=0,
+                scroll_interval=0,
             ),
            widget.Sep(
                 linewidth=0,

@@ -30,7 +30,7 @@ keys = [
     Key([mod], "r", lazy.to_screen(2)),
 
     ### Window Management
-    Key([mod], "x", lazy.window.kill()),
+    Key([mod, "shift"], "x", lazy.window.kill()),
     Key([mod], "space", lazy.window.toggle_floating()),
     Key([mod], "e", lazy.window.toggle_fullscreen()),
     Key([mod, "shift"], "h", lazy.layout.move_left()),

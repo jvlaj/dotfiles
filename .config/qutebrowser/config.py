@@ -199,6 +199,14 @@ config.set('content.notifications.enabled', False, 'https://www.youtube.com')
 #   - ask
 config.set('content.notifications.enabled', False, 'https://www.reddit.com')
 
+# Allow websites to show notifications.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.notifications.enabled', False, 'https://www.chess.com')
+
 # Allow websites to register protocol handlers via
 # `navigator.registerProtocolHandler`.
 # Type: BoolAsk
@@ -208,9 +216,23 @@ config.set('content.notifications.enabled', False, 'https://www.reddit.com')
 #   - ask
 config.set('content.register_protocol_handler', True, 'https://mail.google.com?extsrc=mailto&url=%25s')
 
+# Height (in pixels or as percentage of the window) of the completion.
+# Type: PercOrInt
+c.completion.height = '25%'
+
+# Duration (in milliseconds) to wait before removing finished downloads.
+# If set to -1, downloads are never removed.
+# Type: Int
+c.downloads.remove_finished = 1
+
 # Open a new window for every tab.
 # Type: Bool
 c.tabs.tabs_are_windows = False
+
+# Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
+# for a blank page.
+# Type: FuzzyUrl
+c.url.default_page = '/home/json/.config/qutebrowser/tea-green/index.html'
 
 # Search engines which can be used via the address bar.  Maps a search
 # engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
@@ -233,9 +255,249 @@ c.tabs.tabs_are_windows = False
 # Type: Dict
 c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}', 'ddg': 'https://duckduckgo.com/?q={}'}
 
+# Page(s) to open at the start.
+# Type: List of FuzzyUrl, or FuzzyUrl
+c.url.start_pages = '/home/json/.config/qutebrowser/tea-green/index.html'
+
 # Default zoom level.
 # Type: Perc
 c.zoom.default = '110%'
+
+# Text color of the completion widget. May be a single color to use for
+# all columns or a list of three colors, one for each column.
+# Type: List of QtColor, or QtColor
+c.colors.completion.fg = ['#bebebe', '#bebebe', '#bebebe']
+
+# Foreground color of completion widget category headers.
+# Type: QtColor
+c.colors.completion.category.fg = '#bebebe'
+
+# Color of the scrollbar handle in the completion view.
+# Type: QssColor
+c.colors.completion.scrollbar.fg = '#bebebe'
+
+# Background color for the download bar.
+# Type: QssColor
+c.colors.downloads.bar.bg = '#2a2a2a'
+
+# Color gradient start for download text.
+# Type: QtColor
+c.colors.downloads.start.fg = '#bebebe'
+
+# Color gradient end for download text.
+# Type: QtColor
+c.colors.downloads.stop.fg = '#bebebe'
+
+# Foreground color for downloads with errors.
+# Type: QtColor
+c.colors.downloads.error.fg = '#bebebe'
+
+# Background color for downloads with errors.
+# Type: QtColor
+c.colors.downloads.error.bg = '#8b8f7e'
+
+# Font color for hints.
+# Type: QssColor
+c.colors.hints.fg = '#2a2a2a'
+
+# Foreground color of an error message.
+# Type: QssColor
+c.colors.messages.error.fg = '#bebebe'
+
+# Background color of an error message.
+# Type: QssColor
+c.colors.messages.error.bg = '#8b8f7e'
+
+# Foreground color of a warning message.
+# Type: QssColor
+c.colors.messages.warning.fg = '#2a2a2a'
+
+# Foreground color of an info message.
+# Type: QssColor
+c.colors.messages.info.fg = '#bebebe'
+
+# Background color of an info message.
+# Type: QssColor
+c.colors.messages.info.bg = '#2a2a2a'
+
+# Foreground color for prompts.
+# Type: QssColor
+c.colors.prompts.fg = '#bebebe'
+
+# Foreground color for the selected item in filename prompts.
+# Type: QssColor
+c.colors.prompts.selected.fg = '#bebebe'
+
+# Foreground color of the statusbar.
+# Type: QssColor
+c.colors.statusbar.normal.fg = '#bebebe'
+
+# Background color of the statusbar.
+# Type: QssColor
+c.colors.statusbar.normal.bg = '#2a2a2a'
+
+# Foreground color of the statusbar in insert mode.
+# Type: QssColor
+c.colors.statusbar.insert.fg = '#bebebe'
+
+# Foreground color of the statusbar in passthrough mode.
+# Type: QssColor
+c.colors.statusbar.passthrough.fg = '#bebebe'
+
+# Background color of the statusbar in passthrough mode.
+# Type: QssColor
+c.colors.statusbar.passthrough.bg = '#937f74'
+
+# Foreground color of the statusbar in private browsing mode.
+# Type: QssColor
+c.colors.statusbar.private.fg = '#bebebe'
+
+# Foreground color of the statusbar in command mode.
+# Type: QssColor
+c.colors.statusbar.command.fg = '#bebebe'
+
+# Background color of the statusbar in command mode.
+# Type: QssColor
+c.colors.statusbar.command.bg = '#2a2a2a'
+
+# Foreground color of the statusbar in private browsing + command mode.
+# Type: QssColor
+c.colors.statusbar.command.private.fg = '#bebebe'
+
+# Foreground color of the statusbar in caret mode.
+# Type: QssColor
+c.colors.statusbar.caret.fg = '#bebebe'
+
+# Foreground color of the statusbar in caret mode with a selection.
+# Type: QssColor
+c.colors.statusbar.caret.selection.fg = '#bebebe'
+
+# Background color of the progress bar.
+# Type: QssColor
+c.colors.statusbar.progress.bg = '#bebebe'
+
+# Default foreground color of the URL in the statusbar.
+# Type: QssColor
+c.colors.statusbar.url.fg = '#bebebe'
+
+# Foreground color of the URL in the statusbar on error.
+# Type: QssColor
+c.colors.statusbar.url.error.fg = '#627a8a'
+
+# Foreground color of the URL in the statusbar for hovered links.
+# Type: QssColor
+c.colors.statusbar.url.hover.fg = '#987a6b'
+
+# Foreground color of the URL in the statusbar on successful load
+# (http).
+# Type: QssColor
+c.colors.statusbar.url.success.http.fg = '#bebebe'
+
+# Foreground color of the URL in the statusbar on successful load
+# (https).
+# Type: QssColor
+c.colors.statusbar.url.success.https.fg = '#aa8f7c'
+
+# Foreground color of the URL in the statusbar when there's a warning.
+# Type: QssColor
+c.colors.statusbar.url.warn.fg = '#8b8f7e'
+
+# Background color of the tab bar.
+# Type: QssColor
+c.colors.tabs.bar.bg = '#3a3a3a'
+
+# Foreground color of unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.odd.fg = '#877979'
+
+# Background color of unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.odd.bg = '#3a3a3a'
+
+# Foreground color of unselected even tabs.
+# Type: QtColor
+c.colors.tabs.even.fg = '#877979'
+
+# Background color of unselected even tabs.
+# Type: QtColor
+c.colors.tabs.even.bg = '#3a3a3a'
+
+# Foreground color of selected odd tabs.
+# Type: QtColor
+c.colors.tabs.selected.odd.fg = '#bebebe'
+
+# Background color of selected odd tabs.
+# Type: QtColor
+c.colors.tabs.selected.odd.bg = '#3a3a3a'
+
+# Foreground color of selected even tabs.
+# Type: QtColor
+c.colors.tabs.selected.even.fg = '#bebebe'
+
+# Background color of selected even tabs.
+# Type: QtColor
+c.colors.tabs.selected.even.bg = '#3a3a3a'
+
+# Foreground color of pinned unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.pinned.odd.fg = '#bebebe'
+
+# Background color of pinned unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.pinned.odd.bg = '#987a6b'
+
+# Foreground color of pinned unselected even tabs.
+# Type: QtColor
+c.colors.tabs.pinned.even.fg = '#bebebe'
+
+# Background color of pinned unselected even tabs.
+# Type: QtColor
+c.colors.tabs.pinned.even.bg = '#987a6b'
+
+# Foreground color of pinned selected odd tabs.
+# Type: QtColor
+c.colors.tabs.pinned.selected.odd.fg = '#bebebe'
+
+# Background color of pinned selected odd tabs.
+# Type: QtColor
+c.colors.tabs.pinned.selected.odd.bg = '#987a6b'
+
+# Foreground color of pinned selected even tabs.
+# Type: QtColor
+c.colors.tabs.pinned.selected.even.fg = '#bebebe'
+
+# Background color of pinned selected even tabs.
+# Type: QtColor
+c.colors.tabs.pinned.selected.even.bg = '#987a6b'
+
+# Background color for webpages if unset (or empty to use the theme's
+# color).
+# Type: QtColor
+c.colors.webpage.bg = 'white'
+
+# Render all web contents using a dark theme. Example configurations
+# from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based
+# inversion": Set   `colors.webpage.darkmode.algorithm` accordingly.  -
+# "With selective image inversion": Set
+# `colors.webpage.darkmode.policy.images` to `smart`.  - "With selective
+# inversion of non-image elements": Set
+# `colors.webpage.darkmode.threshold.text` to 150 and
+# `colors.webpage.darkmode.threshold.background` to 205.  - "With
+# selective inversion of everything": Combines the two variants   above.
+# Type: Bool
+c.colors.webpage.darkmode.enabled = True
+
+# Contrast for dark mode. This only has an effect when
+# `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
+# `brightness-rgb`.
+# Type: Float
+c.colors.webpage.darkmode.contrast = 0.0
+
+# Default font families to use. Whenever "default_family" is used in a
+# font setting, it's replaced with the fonts listed here. If set to an
+# empty value, a system-specific monospace default is used.
+# Type: List of Font, or Font
+c.fonts.default_family = '"SF Mono"'
 
 # Default font size to use. Whenever "default_size" is used in a font
 # setting, it's replaced with the size listed here. Valid values are
@@ -243,3 +505,7 @@ c.zoom.default = '110%'
 # "px" suffix.
 # Type: String
 c.fonts.default_size = '12pt'
+
+# Font used for the downloadbar.
+# Type: Font
+c.fonts.downloads = 'default_size default_family'

@@ -63,24 +63,9 @@ keys = [
     Key([], 'Print', lazy.spawn("gnome-screenshot -i")),
 
     ### MediaKeys
-    Key([], 'XF86AudioPlay',
-        lazy.spawn(
-            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
-            '/org/mpris/MediaPlayer2 '
-            'org.mpris.MediaPlayer2.Player.PlayPause')),
-    Key([], 'XF86AudioStop',
-        lazy.spawn(
-            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
-            '/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop')),
-    Key([], 'XF86AudioNext',
-        lazy.spawn(
-            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
-            '/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next')),
-    Key([], 'XF86AudioPrev',
-        lazy.spawn(
-            'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify '
-            '/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous')),
-
+    Key([], 'XF86AudioPlay', lazy.spawn('playerctl play-pause')),
+    Key([], 'XF86AudioNext', lazy.spawn('playerctl next')),
+    Key([], 'XF86AudioPrev', lazy.spawn('playerctl previous')),
 ]
 
 ### Workspaces
@@ -136,11 +121,11 @@ layouts = [
         padding_left=0,
         padding_x=0,
         padding_y=5,
-        section_top=10,
-        section_bottom=20,
-        level_shift=8,
+        section_top=5,
+        section_bottom=5,
+        level_shift=5,
         vspace=3,
-        panel_width=200
+        panel_width=100
         ),
     layout.Floating(**layout_theme)
 ]
@@ -225,22 +210,24 @@ def init_widgets_list():
                 padding=40,
                 foreground=colors[2],
             ),
-            widget.TextBox(
-                text="🎧",
-                padding=2,
+            widget.Cmus(
                 foreground=colors[2],
-                fontsize=14
+                font="SF Mono",
+                fontsize=14,
+                play_color=colors[2],
+                noplay_color=colors[3],
             ),
- 
-            widget.Mpris2(
+           widget.Mpris2(
                 name='spotify',
+                fmt='♫ {}',
                 objname='org.mpris.MediaPlayer2.spotify',
-                display_metadata=['xesam:title', 'xesam:artist'],
+                display_metadata=['xesam:artist', 'xesam:title'],
                 font="SF Mono",
                 foreground=colors[2],
                 scroll_chars=30,
                 scroll_wait_intervals=0,
                 scroll_interval=0,
+                stop_pause_text='',
             ),
            widget.Sep(
                 linewidth=0,
@@ -257,7 +244,7 @@ def init_widgets_list():
                 update_interval=1800,
                 distro="Arch_checkupdates",
                 display_format="{updates} Updates",
-                foreground=colors[3],
+                foreground=colors[2],
                 mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e sudo pacman -Syu')},
             ),
             widget.TextBox(

@@ -161,7 +161,7 @@
     max_icon_size = 180
 
     # Paths to default icons.
-    icon_folders = /home/rayes/.icons/Papirus-Dark-Custom/22x22/actions:/home/rayes/.icons/Papirus-Dark-Custom/22x22/apps:/home/rayes/.icons/Papirus-Dark-Custom/22x22/categories:/home/rayes/.icons/Papirus-Dark-Custom/22x22/devices:/home/rayes/.icons/Papirus-Dark-Custom/22x22/emblems:/home/rayes/.icons/Papirus-Dark-Custom/22x22/panel:/home/rayes/.icons/Papirus-Dark-Custom/22x22/status
+    icon_folders = /home/json/.icons/Papirus-Dark-Custom/22x22/actions:/home/json/.icons/Papirus-Dark-Custom/22x22/apps:/home/json/.icons/Papirus-Dark-Custom/22x22/categories:/home/json/.icons/Papirus-Dark-Custom/22x22/devices:/home/json/.icons/Papirus-Dark-Custom/22x22/emblems:/home/json/.icons/Papirus-Dark-Custom/22x22/panel:/home/json/.icons/Papirus-Dark-Custom/22x22/status
 
     ### History ###
 

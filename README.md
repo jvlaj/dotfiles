@@ -4,7 +4,7 @@
 - <b>Distro:</b> Arch Linux 
 - <b>WM:</b> qtile / spectrwm 
 - <b>Theme:</b> [sayo](https://github.com/rayes0/sayo/)
-- <b>Browser:</b> qutebrowser / firefox
+- <b>Browser:</b> qutebrowser
 - <b>Editor:</b> neovim w/ nvim-lsp
 - <b>Terminal:</b> uxterm
 - <b>Shell:</b> fish

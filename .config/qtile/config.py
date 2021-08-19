@@ -69,15 +69,15 @@ keys = [
 ]
 
 ### Workspaces
-group_names = [("WWW", {'layout': 'monadtall', 'matches':[Match(wm_class=["firefox", "Chromium"])]}),
-               ("DEV", {'layout': 'monadtall'}),
+group_names = [("WWW", {'layout': 'monadtall', 'matches':[Match(wm_class=["firefox", "Chromium", "qutebrowser"])]}),
+               ("DEV", {'layout': 'monadtall', 'matches':[Match(wm_class=["emacs", "Emacs"])]}),
                ("RANG", {'layout': 'monadtall'}),
                ("SYS", {'layout': 'monadtall', 'matches':[Match(title=["deluge"])]}),
                ("CHAT", {'layout': 'monadtall', 'matches':[Match(wm_class=["discord"])]}),
                ("CAL", {'layout': 'monadtall', 'matches':[Match(title=["calcurse /home/json"])]}),
                ("MUS", {'layout': 'monadtall', 'matches':[Match(wm_class=["spotify"])]}),
                ("GAME", {'layout': 'monadtall', 'matches':[Match(wm_class=["Steam"])]}),
-               ("STAT", {'layout': 'monadwide', 'matches':[Match(wm_instance_class=["Navigator"])]})
+               ("STAT", {'layout': 'verticaltile', 'matches':[Match(wm_instance_class=["Navigator"])]})
                ] 
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -99,13 +99,13 @@ layouts = [
     # layout.Columns(**layout_theme),
     # layout.RatioTile(**layout_theme),
     # layout.Tile(shift_windows=True, **layout_theme),
-    # layout.VerticalTile(**layout_theme),
+    layout.VerticalTile(**layout_theme),
     # layout.Matrix(**layout_theme),
     # layout.Zoomy(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Stack(num_stacks=2),
+    #layout.Stack(num_stacks=2),
     layout.RatioTile(**layout_theme),
     layout.TreeTab(
         font=" SF Mono",

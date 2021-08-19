@@ -13,6 +13,11 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
+# Aliases for commands. The keys of the given dictionary are the
+# aliases, while the values are the commands they map to.
+# Type: Dict
+c.aliases = {'q': 'close', 'qa': 'quit', 'w': 'session-save', 'wq': 'quit --save', 'wqa': 'quit --save'}
+
 # Always restore open sites when qutebrowser is reopened. Without this
 # option set, `:wq` (`:quit --save`) needs to be used to save open tabs
 # (and restore them), while quitting qutebrowser in any other way will
@@ -225,6 +230,23 @@ c.completion.height = '25%'
 # Type: Int
 c.downloads.remove_finished = 1
 
+# When to show the statusbar.
+# Type: String
+# Valid values:
+#   - always: Always show the statusbar.
+#   - never: Always hide the statusbar.
+#   - in-mode: Show the statusbar when in modes other than normal mode.
+c.statusbar.show = 'in-mode'
+
+# When to show the tab bar.
+# Type: String
+# Valid values:
+#   - always: Always show the tab bar.
+#   - never: Always hide the tab bar.
+#   - multiple: Hide the tab bar if only one tab is open.
+#   - switching: Show the tab bar when switching tabs.
+c.tabs.show = 'multiple'
+
 # Open a new window for every tab.
 # Type: Bool
 c.tabs.tabs_are_windows = False
@@ -340,6 +362,10 @@ c.colors.statusbar.normal.bg = '#2a2a2a'
 # Type: QssColor
 c.colors.statusbar.insert.fg = '#bebebe'
 
+# Background color of the statusbar in insert mode.
+# Type: QssColor
+c.colors.statusbar.insert.bg = '#aa8f7c'
+
 # Foreground color of the statusbar in passthrough mode.
 # Type: QssColor
 c.colors.statusbar.passthrough.fg = '#bebebe'
@@ -367,6 +393,10 @@ c.colors.statusbar.command.private.fg = '#bebebe'
 # Foreground color of the statusbar in caret mode.
 # Type: QssColor
 c.colors.statusbar.caret.fg = '#bebebe'
+
+# Background color of the statusbar in caret mode.
+# Type: QssColor
+c.colors.statusbar.caret.bg = '#987a6b'
 
 # Foreground color of the statusbar in caret mode with a selection.
 # Type: QssColor
@@ -485,7 +515,7 @@ c.colors.webpage.bg = 'white'
 # `colors.webpage.darkmode.threshold.background` to 205.  - "With
 # selective inversion of everything": Combines the two variants   above.
 # Type: Bool
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 # Contrast for dark mode. This only has an effect when
 # `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
@@ -509,3 +539,11 @@ c.fonts.default_size = '12pt'
 # Font used for the downloadbar.
 # Type: Font
 c.fonts.downloads = 'default_size default_family'
+
+# Font used for selected tabs.
+# Type: Font
+c.fonts.tabs.selected = '12pt Iosevka'
+
+# Font used for unselected tabs.
+# Type: Font
+c.fonts.tabs.unselected = '12pt Iosevka'

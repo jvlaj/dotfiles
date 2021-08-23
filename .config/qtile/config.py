@@ -59,6 +59,8 @@ keys = [
     Key([mod], "f", lazy.spawn(myTerm+" -e ranger")),
     Key([mod], "n", lazy.spawn("nautilus")),
     Key([mod], "p", lazy.spawn(myTerm+" -e passmenu")),
+    Key([mod], "c", lazy.spawn("emacsclient -nc")),
+
         # Screenshots
     Key([], 'Print', lazy.spawn("gnome-screenshot -i")),
 

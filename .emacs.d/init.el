@@ -19,8 +19,6 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
-(load-theme 'wombat)
-
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -74,10 +72,24 @@
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history)))
 
+(use-package all-the-icons)
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+
+(use-package general
+  :config
+  (general-create-definer leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (leader-keys
+  "t" '(:ignore t :which-key "toggles")
+  "tt" '(counsel-load-theme :which-key "choose theme")))
+
 
 ;; load evil
 (use-package evil
@@ -89,8 +101,20 @@
   (setq evil-split-window-below t)
   (setq evil-shift-round nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-integration t)
+  (setq evil-want-C-i-jump nil)
   :config ;; tweak evil after loading it
-  (evil-mode))
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  )
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 (use-package which-key
   :init (which-key-mode)
@@ -129,3 +153,21 @@
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("f" nil "finished" :exit t))
+
+(leader-keys
+  "ts" '(hydra-text-scale/body :which-key "scale text"))
+
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer
+ "C-l" 'evil-ex-nohighlight
+)
+
+;; TODO : learn & set magit general prefix keys
+

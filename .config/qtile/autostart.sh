@@ -10,4 +10,4 @@ uxterm -T calcurse -e calcurse &
 qutebrowser &
 emacs --daemon -l /home/json/.emacs.d/init.el &
 emacsclient -nc &
-deluge
+deluge-gtk

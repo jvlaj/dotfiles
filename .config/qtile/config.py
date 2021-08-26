@@ -19,7 +19,7 @@ myTerm = "uxterm"  # My terminal of choice
 keys = [
     ### QTile Management
     Key([mod, "shift"], "r", lazy.restart()),
-    Key([mod, "shift"], "q", lazy.shutdown()),
+    Key([mod, "shift"], "q", lazy.spawn("/home/json/bin/powermenu.sh")),
 
     ### Screen Management
     Key([mod], "period", lazy.next_screen()),
@@ -53,11 +53,12 @@ keys = [
     ### Menus
     Key([mod], "m", lazy.spawn("rofi -no-lazy-grab -show drun -theme launcher.rasi -m -4 -font 'SF Mono 12'")),
     ##Key([mod, "shift"], "Return", lazy.spawn("dmenu_run -p 'Run: '")),
+    Key([mod], "w", lazy.spawn("rofi -no-lazy-grab -show window -theme launcher.rasi -m -4 -font 'SF Mono 12'")),
 
     ### Applications
     Key([mod], "Return", lazy.spawn(myTerm+" -e fish")),
-    Key([mod], "f", lazy.spawn(myTerm+" -e ranger")),
-    Key([mod], "n", lazy.spawn("nautilus")),
+    Key([mod], "r", lazy.spawn(myTerm+" -e ranger")),
+    Key([mod], "f", lazy.spawn("nautilus")),
     Key([mod], "p", lazy.spawn(myTerm+" -e passmenu")),
     Key([mod], "c", lazy.spawn("emacsclient -nc")),
 
@@ -71,15 +72,15 @@ keys = [
 ]
 
 ### Workspaces
-group_names = [("WWW", {'layout': 'monadtall', 'matches':[Match(wm_class=["firefox", "Chromium", "qutebrowser"])]}),
-               ("DEV", {'layout': 'monadtall', 'matches':[Match(wm_class=["emacs", "Emacs"])]}),
-               ("RANG", {'layout': 'monadtall'}),
-               ("SYS", {'layout': 'monadtall', 'matches':[Match(title=["deluge"])]}),
-               ("CHAT", {'layout': 'monadtall', 'matches':[Match(wm_class=["discord"])]}),
-               ("CAL", {'layout': 'monadtall', 'matches':[Match(title=["calcurse /home/json"])]}),
-               ("MUS", {'layout': 'monadtall', 'matches':[Match(wm_class=["spotify"])]}),
-               ("GAME", {'layout': 'monadtall', 'matches':[Match(wm_class=["Steam"])]}),
-               ("STAT", {'layout': 'verticaltile', 'matches':[Match(wm_instance_class=["Navigator"])]})
+group_names = [("1", {'layout': 'monadtall', 'matches':[Match(wm_class=["firefox", "Chromium", "qutebrowser"])]}),
+               ("2", {'layout': 'monadtall', 'matches':[Match(wm_class=["emacs", "Emacs"])]}),
+               ("3", {'layout': 'monadtall'}),
+               ("4", {'layout': 'monadtall', 'matches':[Match(title=["lutris"])]}),
+               ("5", {'layout': 'monadtall', 'matches':[Match(wm_class=["discord"])]}),
+               ("6", {'layout': 'monadtall', 'matches':[Match(title=["deluge"])]}),
+               ("7", {'layout': 'monadtall', 'matches':[Match(wm_class=["spotify", "Spotify"])]}),
+               ("8", {'layout': 'monadtall', 'matches':[Match(wm_class=["Steam"])]}),
+               ("9", {'layout': 'verticaltile', 'matches':[Match(wm_instance_class=["Navigator"])]})
                ] 
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -364,7 +365,10 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='Qalculate!'),  # qalculate-gtk
     Match(wm_class='kdenlive'),  # kdenlive
     Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
-])
+],
+border_focus="937f74"
+)
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 

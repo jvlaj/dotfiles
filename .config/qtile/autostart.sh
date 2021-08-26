@@ -5,9 +5,7 @@ xset dpms 0 0 300 &
 fcitx &
 discord & 
 spotify &
-uxterm -T calcurse -e calcurse &
 /home/json/bin/mouse.sh &
 qutebrowser &
 emacs --daemon -l /home/json/.emacs.d/init.el &
-emacsclient -nc &
-deluge-gtk
+emacsclient -nc

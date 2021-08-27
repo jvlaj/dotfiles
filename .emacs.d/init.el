@@ -1,34 +1,3 @@
-(setq inhibit-startup-message t)
-
-(scroll-bar-mode -1)        ; Disable visible scrollbar
-(tool-bar-mode -1)          ; Disable the toolbar
-(tooltip-mode -1)           ; Disable tooltips
-(set-fringe-mode 10)        ; Give some breathing room
-
-(menu-bar-mode -1)            ; Disable the menu bar
-
-
-(set-face-attribute 'default nil :font "SF Mono" :height 120)
-
-;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font" :height 140)
-
-;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 140 :weight 'regular)
-
-(column-number-mode)
-(setq global-display-line-numbers-mode t)
-
-(dolist (mode '(org-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -46,6 +15,30 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(setq inhibit-startup-message t)
+(scroll-bar-mode -1)        ; Disable visible scrollbar
+(tool-bar-mode -1)          ; Disable the toolbar
+(tooltip-mode -1)           ; Disable tooltips
+(set-fringe-mode 10)        ; Give some breathing room
+(menu-bar-mode -1)          ; Disable the menu bar
+
+; Line numbers in all buffers
+(column-number-mode)
+(setq global-display-line-numbers-mode t)
+
+;Except for some modes
+(dolist (mode '(org-mode-hook term-mode-hook shell-mode-hook eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+; Default
+(set-face-attribute 'default nil :font "SF Mono" :height 120)
+
+; Fixed
+(set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font" :height 140)
+
+; Variable
+(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 140 :weight 'regular)
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -54,7 +47,7 @@
          ("C-l" . ivy-alt-done)
          ("C-j" . ivy-next-line)
          ("C-k" . ivy-previous-line)
-	 ("C-w" . ivy-backward-kill-word)
+         ("C-w" . ivy-backward-kill-word)
          :map ivy-switch-buffer-map
          ("C-k" . ivy-previous-line)
          ("C-l" . ivy-done)
@@ -86,72 +79,6 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
-(use-package general
-  :config
-  (general-create-definer leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-
-(general-define-key
- "C-M-j" 'counsel-switch-buffer
- "C-l" 'evil-ex-nohighlight
-)
-
-  (leader-keys
-  "t" '(:ignore t :which-key "toggles")
-  "tt" '(counsel-load-theme :which-key "choose theme")))
-
-(use-package undo-tree
-  :init
-  (global-undo-tree-mode 1))
-
-;; load evil
-(use-package evil
-  :ensure t ;; install the evil package if not installed
-  :init ;; tweak evil's configuration before loading it
-  (setq evil-search-module 'evil-search)
-  (setq evil-ex-complete-emacs-commands nil)
-  (setq evil-vsplit-window-right t)
-  (setq evil-split-window-below t)
-  (setq evil-shift-round nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-integration t)
-  (setq evil-want-C-i-jump nil)
-  (setq evil-undo-system 'undo-tree)
-  :config ;; tweak evil after loading it
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  )
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 0.3))
-
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package helpful
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . helpful-function)
-  ([remap describe-symbol] . helpful-symbol)
-  ([remap describe-variable] . helpful-variable)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-key] . helpful-key))
-
 (use-package doom-themes
   :ensure t
   :config
@@ -170,6 +97,39 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
+(use-package helpful
+ :custom
+ (counsel-describe-function-function #'helpful-callable)
+ (counsel-describe-variable-function #'helpful-variable)
+ :bind
+ ([remap describe-function] . helpful-function)
+ ([remap describe-symbol] . helpful-symbol)
+ ([remap describe-variable] . helpful-variable)
+ ([remap describe-command] . helpful-command)
+ ([remap describe-key] . helpful-key))
+
+(use-package general
+  :config
+  (general-create-definer leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer
+ "C-l" 'evil-ex-nohighlight
+)
+
+(leader-keys
+"t" '(:ignore t :which-key "toggles")
+"tt" '(counsel-load-theme :which-key "choose theme")))
+
 (use-package hydra)
 
 (defhydra hydra-text-scale (:timeout 4)
@@ -177,8 +137,42 @@
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
 
-(leader-keys
+(leader-keys ; implement our function via leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
+
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; esc like vim
+
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-search-module 'evil-search)
+  (setq evil-ex-complete-emacs-commands nil)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (setq evil-shift-round nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-integration t)
+  (setq evil-want-C-i-jump nil)
+  (setq evil-undo-system 'undo-tree)
+  :config ;; tweak evil after loading it
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+)
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+;; undo tree
+
+(use-package undo-tree
+  :after evil
+  :config
+  (global-undo-tree-mode 1))
 
 (use-package projectile
   :diminish projectile-mode
@@ -194,24 +188,28 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-(use-package magit)
+(use-package magit
+    :commands magit-status
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-;; org mode configuration
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (defun org-font-setup ()
 ;; Replace list hyphen with dot
     (font-lock-add-keywords 'org-mode
-			'(("^ *\\([-]\\) "
-			   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
 (dolist (face '((org-level-1 . 1.2)
-		(org-level-2 . 1.1)
-		(org-level-3 . 1.05)
-		(org-level-4 . 1.0)
-		(org-level-5 . 1.1)
-		(org-level-6 . 1.1)
-		(org-level-7 . 1.1)
-		(org-level-8 . 1.1)))
+                (org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.1)
+                (org-level-6 . 1.1)
+                (org-level-7 . 1.1)
+                (org-level-8 . 1.1)))
 
 ;; Ensure that anything that should be fixed-pitch in Org files appears that way
 (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
@@ -237,12 +235,12 @@
   :hook (org-mode . org-mode-setup)
   :config
       (setq org-ellipsis "▾"
-	org-hide-emphasis-markers t)
+        org-hide-emphasis-markers t)
 
     (setq org-agenda-files
-	  '("~/OrgFiles/Tasks.org"
-	    "~/OrgFiles/School.org"
-	    "~/OrgFiles/Habits.org"
+          '("~/OrgFiles/Tasks.org"
+            "~/OrgFiles/School.org"
+            "~/OrgFiles/Habits.org"
     ))
 
     (setq org-refile-targets
@@ -261,7 +259,7 @@
 
     (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
-	(sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
+        (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
 
     (setq org-tag-alist
       '((:startgroup)
@@ -276,53 +274,53 @@
          ("note" . ?n)
          ("idea" . ?i)))
 
-   
+
     (setq org-agenda-custom-commands
      '(("d" "Dashboard"
        ((agenda "" ((org-deadline-warning-days 7)))
-	(todo "NEXT"
-	  ((org-agenda-overriding-header "Next Tasks")))
-	(tags-todo "agenda/ACTIVE" ((org-agenda-overriding-header "Active Projects")))))
+        (todo "NEXT"
+          ((org-agenda-overriding-header "Next Tasks")))
+        (tags-todo "agenda/ACTIVE" ((org-agenda-overriding-header "Active Projects")))))
 
       ("n" "Next Tasks"
        ((todo "NEXT"
-	  ((org-agenda-overriding-header "Next Tasks")))))
-      
+          ((org-agenda-overriding-header "Next Tasks")))))
+
       ("W" "Work Tasks" tags-todo "+work-email")
 
       ;; Low-effort next actions
       ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
        ((org-agenda-overriding-header "Low Effort Tasks")
-	(org-agenda-max-todos 20)
-	(org-agenda-files org-agenda-files)))
+        (org-agenda-max-todos 20)
+        (org-agenda-files org-agenda-files)))
 
       ("w" "Workflow Status"
        ((todo "WAIT"
-	      ((org-agenda-overriding-header "Waiting on External")
-	       (org-agenda-files org-agenda-files)))
-	(todo "REVIEW"
-	      ((org-agenda-overriding-header "In Review")
-	       (org-agenda-files org-agenda-files)))
-	(todo "PLAN"
-	      ((org-agenda-overriding-header "In Planning")
-	       (org-agenda-todo-list-sublevels nil)
-	       (org-agenda-files org-agenda-files)))
-	(todo "BACKLOG"
-	      ((org-agenda-overriding-header "Project Backlog")
-	       (org-agenda-todo-list-sublevels nil)
-	       (org-agenda-files org-agenda-files)))
-	(todo "READY"
-	      ((org-agenda-overriding-header "Ready for Work")
-	       (org-agenda-files org-agenda-files)))
-	(todo "ACTIVE"
-	      ((org-agenda-overriding-header "Active Projects")
-	       (org-agenda-files org-agenda-files)))
-	(todo "COMPLETED"
-	      ((org-agenda-overriding-header "Completed Projects")
-	       (org-agenda-files org-agenda-files)))
-	(todo "CANC"
-	      ((org-agenda-overriding-header "Cancelled Projects")
-	       (org-agenda-files org-agenda-files)))))))
+              ((org-agenda-overriding-header "Waiting on External")
+               (org-agenda-files org-agenda-files)))
+        (todo "REVIEW"
+              ((org-agenda-overriding-header "In Review")
+               (org-agenda-files org-agenda-files)))
+        (todo "PLAN"
+              ((org-agenda-overriding-header "In Planning")
+               (org-agenda-todo-list-sublevels nil)
+               (org-agenda-files org-agenda-files)))
+        (todo "BACKLOG"
+              ((org-agenda-overriding-header "Project Backlog")
+               (org-agenda-todo-list-sublevels nil)
+               (org-agenda-files org-agenda-files)))
+        (todo "READY"
+              ((org-agenda-overriding-header "Ready for Work")
+               (org-agenda-files org-agenda-files)))
+        (todo "ACTIVE"
+              ((org-agenda-overriding-header "Active Projects")
+               (org-agenda-files org-agenda-files)))
+        (todo "COMPLETED"
+              ((org-agenda-overriding-header "Completed Projects")
+               (org-agenda-files org-agenda-files)))
+        (todo "CANC"
+              ((org-agenda-overriding-header "Cancelled Projects")
+               (org-agenda-files org-agenda-files)))))))
 
     (setq org-capture-templates
       `(("t" "Tasks / Projects")
@@ -361,13 +359,36 @@
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-;; need org wild notifier - os notifications
-
-
 (defun org-mode-visual-fill ()
     (setq visual-fill-column-width 100
-	  visual-fill-column-center-text t)
+          visual-fill-column-center-text t)
     (visual-fill-column-mode 1))
 
 (use-package visual-fill-column
     :hook (org-mode . org-mode-visual-fill))
+
+(with-eval-after-load 'org
+(org-babel-do-load-languages ; let us execute blocks of code in org
+    'org-babel-load-languages
+    '((emacs-lisp . t)
+    (python . t)))
+
+(push '("conf-unix" . conf-unix) org-src-lang-modes))
+
+(with-eval-after-load 'org
+  ;; This is needed as of Org 9.2
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python")))
+
+;; Automatically tangle our Emacs.org config file when we save it
+(defun org-babel-tangle-config ()
+  (when (string-equal (file-name-directory (buffer-file-name))
+                      (expand-file-name user-emacs-directory))
+    ;; Dynamic scoping to the rescue
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'org-babel-tangle-config)))

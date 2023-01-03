@@ -1,0 +1,96 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set textobj-entire
+set ReplaceWithRegister
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common Settings -------------------------
+set showmode
+set hlsearch
+set so=5
+set incsearch
+set nu
+set scrolloff=5
+set ignorecase smartcase
+set number
+set relativenumber
+set clipboard+=unnamed
+set multiple-cursors
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+
+map <leader>d <Action>(Debug)
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader>s <Action>(SelectInProjectView)
+"map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+
+" Splits manipulation
+nmap <leader>wc :action Unsplit<cr>
+nmap <leader>wC :action UnsplitAll<cr>
+nmap <leader>wd :action OpenEditorInOppositeTabGroup<cr>
+nmap <leader><leader> :action VimFilePrevious<cr>
+"nmap <leader>ww :action JumpToLastWindow<cr>
+
+" Navigation
+"nmap <leader>h :action Back<cr>
+"nmap <leader>l :action Forward<cr>
+nmap <leader>L :action RecentLocations<cr>
+nmap <leader>g :action GotoDeclaration<cr>
+nmap <leader>u :action FindUsages<cr>
+nmap <leader>f :action GotoFile<cr>
+nmap <leader>c :action GotoClass<cr>
+nmap <leader>s :action GotoSymbol<cr>
+nmap <leader>m :action FileStructurePopup<cr>
+nmap <leader>; :action FileStructurePopup<cr>
+nmap <leader>M :action ActivateStructureToolWindow<cr>
+nmap <leader>d :action ShowErrorDescription<cr>
+nmap <leader>i :action GotoImplementation<cr>
+nmap <leader>I :action SelectIn<cr>
+nmap <leader>e :action RecentFiles<cr>
+nmap <leader>t :action GotoTest<cr>
+nmap <leader>p :action JumpToLastWindow<cr>
+nmap <leader>b :action ShowBookmarks<cr>
+nmap <leader>a :action Switcher<cr>
+
+" Errors
+nmap <leader>x :action GotoNextError<cr>
+nmap <leader>X :action GotoPreviousError<cr>
+
+" Refactorings
+vmap T :action Refactorings.QuickListPopupAction<cr>
+nmap <leader>rr :action RenameElement<cr>
+nmap <leader>rg :action Generate<cr>
+nmap <leader>rI :action OptimizeImports<cr>
+" Inspection
+nmap <leader>rc :action InspectCode<cr>
+
+" Terminal
+nmap <leader>T :action ActivateTerminalToolWindow<cr>                          
+
+" External Emacs
+nmap <leader>E :action Tool_External Tools_emacsclient<cr>
+

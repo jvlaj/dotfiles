@@ -215,7 +215,7 @@ workspace 6 output DP-2
 workspace 7 output DP-2
 workspace 8 output DP-2
 workspace 9 output DP-2
-workspace 10 output DP-0
+workspace 10 output DP-3
 
 
 # print screen
@@ -229,6 +229,7 @@ bindsym $mod+c exec "emacsclient -nc"
 
 exec ~/.screenlayout/default.sh
 exec emacs --daemon
+exec fcitx5
 
 exec --no-startup-id xdg-user-dirs-update
 

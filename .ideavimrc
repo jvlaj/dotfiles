@@ -35,7 +35,7 @@ set idearefactormode=keep
 
 """ Mappings --------------------------------
 
-map <leader>d <Action>(Debug)
+" map <leader>d <Action>(Debug)
 map <leader>r <Action>(RenameElement)
 map <leader>c <Action>(Stop)
 map <leader>z <Action>(ToggleDistractionFreeMode)
@@ -85,12 +85,17 @@ vmap T :action Refactorings.QuickListPopupAction<cr>
 nmap <leader>rr :action RenameElement<cr>
 nmap <leader>rg :action Generate<cr>
 nmap <leader>rI :action OptimizeImports<cr>
+
 " Inspection
 nmap <leader>rc :action InspectCode<cr>
+
+" Documentation
+nmap <leader>dq :action QuickJavaDoc<cr>
+nmap <leader>dc :action ExternalJavaDoc<cr>
+nmap <leader>dp :action ParameterInfo<cr>
 
 " Terminal
 nmap <leader>T :action ActivateTerminalToolWindow<cr>                          
 
-" External Emacs
-nmap <leader>E :action Tool_External Tools_emacsclient<cr>
-
+" Highlight
+map <C-l> :noh<cr>

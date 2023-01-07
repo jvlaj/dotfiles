@@ -3,34 +3,34 @@ env:
   LANG: "en_US.UTF-8"
   LC_CTYPE: en_US.UTF-8
 
-# Colors (Wombat)
+
 colors:
-  # Default colors
   primary:
-    background: '0x1f1f1f'
-    foreground: '0xe5e1d8'
+    background: '#000000'
+    foreground: '#FFFFFF'
 
-  # Normal colors
-  normal:
-    black:   '0x000000'
-    red:     '0xf7786d'
-    green:   '0xbde97c'
-    yellow:  '0xefdfac'
-    blue:    '0x6ebaf8'
-    magenta: '0xef88ff'
-    cyan:    '0x90fdf8'
-    white:   '0xe5e1d8'
+# Normal Colours
+normal:
+  black:   '#1a1a1a'
+  red:     '#f4005f'
+  green:   '#98e024'
+  yellow:  '#fa8419'
+  blue:    '#9d65ff'
+  magenta: '#f4005f'
+  cyan:    '#58d1eb'
+  white:   '#c4c5b5'
 
-  # Bright colors
-  bright:
-    black:   '0xb4b4b4'
-    red:     '0xf99f92'
-    green:   '0xe3f7a1'
-    yellow:  '0xf2e9bf'
-    blue:    '0xb3d2ff'
-    magenta: '0xe5bdff'
-    cyan:    '0xc2fefa'
-    white:   '0xffffff'
+# Bright Colours
+bright:
+  black:   '#625e4c'
+  red:     '#f4005f'
+  green: '#98e024'
+  yellow: '#e0d561'
+  blue: '#9d65ff'
+  magenta: '#f4005f'
+  cyan: '#58d1eb'
+  white: '#f6f6ef'
+
 
 font:
   normal:

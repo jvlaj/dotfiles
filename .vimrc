@@ -23,4 +23,4 @@ set hidden
 set wildmenu
 set autochdir
 nnoremap <C-L> :nohl<CR><C-L>
-colorscheme evening
+colorscheme murphy

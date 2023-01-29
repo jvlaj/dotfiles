@@ -199,7 +199,8 @@ bar {
     urgent_workspace   #EC69A0 #DB3279 #FFFFFF
     binding_mode       #b691d3 #A07CBC #FFFFFF
   }
-  status_command i3status
+  status_command $HOME/.config/i3/mystatus.sh
+  mode dock
   output DP-2
 }
 

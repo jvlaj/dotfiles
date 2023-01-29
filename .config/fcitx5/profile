@@ -4,17 +4,17 @@ Name=Default
 # Layout
 Default Layout=au
 # Default Input Method
-DefaultIM=mozc
+DefaultIM=keyboard-au
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-au
+Name=mozc
 # Layout
 Layout=
 
 [Groups/0/Items/1]
 # Name
-Name=mozc
+Name=keyboard-au
 # Layout
 Layout=
 

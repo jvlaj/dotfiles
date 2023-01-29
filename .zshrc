@@ -8,6 +8,9 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # path to .~/.profile
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
 
+# virtaulenvwrapper
+emulate sh -c 'source $HOME/.local/bin/virtualenvwrapper.sh'
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -138,3 +141,7 @@ export LANG=en_US.UTF-8
 
 # Aliases
 source $HOME/.aliases
+
+# fnm
+export PATH="/home/jvlaj/.local/share/fnm:$PATH"
+eval "`fnm env`"

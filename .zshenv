@@ -1,15 +1,19 @@
-path+=("/home/$USER/.bin")
-path+=("/home/$USER/.emacs.d/bin")
-path+=("/home/$USER/.local/bin")
+export VISUAL=nvim
+export EDITOR=$VISUAL
+export PAGER='less'
 
-export GOPATH=/home/json/go/
+path+=("$HOME/.bin")
+path+=("$HOME/.emacs.d/bin")
+path+=("$HOME/.local/bin")
+
+export GOPATH=/$HOME/go/
 path+=("$GOPATH/bin")
-
-export UE4_ROOT=~/UnrealEngine_4.26
 
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
 
-#virtaulenvwrapper
-export WORKON_HOME=~/.virtaulenvs
+# python virtaulenvwrapper
+if [ -e $HOME/.virtualenvs ]; then
+	export WORKON_HOME=~/.virtaulenvs
+fi

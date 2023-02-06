@@ -7,6 +7,7 @@ $include /etc/inputrc
 set editing-mode vi
 set keymap vi
 set show-mode-in-prompt on
+set bell-style none
 
 # Prevent pasted characters from being interpreted as commands
 set enable-bracketed-paste on

@@ -1,8 +1,9 @@
-<h1 align="center">Dotfiles</h1> 
+<h1 align="center">Dotfiles</h1>
 
 ## Info
 
-- Fedora + i3 
-- zsh, neovim, kitty
-- Doom emacs for writing (LaTeX, org-mode).
-- IntelliJ IDEs for development
+- Fedora + i3
+- fish, tmux
+- nvim, intellij, doom emacs
+
+Among other things..

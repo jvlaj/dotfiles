@@ -2,8 +2,5 @@
 
 ## Info
 
-- Fedora + i3
-- fish, tmux
+- zsh, tmux
 - nvim, intellij, doom emacs
-
-Among other things..

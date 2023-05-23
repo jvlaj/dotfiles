@@ -1,6 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = https://github.com/jvlaj/nvim
+	url = git@github.com:jvlaj/nvim
 [submodule ".config/doom"]
 	path = .config/doom
 	url = https://github.com/jvlaj/doom

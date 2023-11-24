@@ -1,4 +1,4 @@
-set $TERM alacritty
+set $TERM konsole
 set $mod Mod4
 
 workspace_auto_back_and_forth yes
@@ -27,8 +27,9 @@ bindsym $mod+Return exec $TERM
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
-# bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun -show combi -icon-theme 'Papirus' -show-icons"
+bindsym $mod+shift+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
+
+# bindsym $mod+shift+d exec --no-startup-id "rofi -combi-modi drun -show combi -icon-theme 'Papirus' -show-icons"
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -95,7 +96,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -146,8 +147,9 @@ bar {
     binding_mode       #b691d3 #A07CBC #FFFFFF
   }
   status_command i3status
-  mode dock
-  output DP-2
+  mode hide
+  height 30
+  output DP-2 
 }
 
 workspace 1 output DP-2
@@ -174,3 +176,31 @@ exec fcitx5
 
 exec --no-startup-id xdg-user-dirs-update
 
+
+# plasma
+
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable, border none
+for_window [title="plasma-desktop"] floating enable, border none
+for_window [title="win7"] floating enable, border none
+for_window [class="krunner"] floating enable, border none
+for_window [class="Kmix"] floating enable, border none
+for_window [class="Klipper"] floating enable, border none
+for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"] 
+for_window [title="Desktop @ QRect(0,0 2560x1440)"] kill; floating enable; border none
+for_window [title="Desktop @ QRect(2560,0 2560x1440)"] kill; floating enable; border none
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position 2090px 20px
+
+exec --no-startup-id /usr/lib/pam_kwallet_init
+exec --no-startup-id /usr/bin/compfy -b
+exec --no-startup-id feh --bg-fill ~/Downloads/wall.jpg
+
+# shortcuts
+
+bindsym $mod+d exec --no-startup-id qdbus org.kde.krunner /App org.kde.krunner.App.display
+bindsym $mod+shift+t exec --no-startup-id qdbus org.kde.kglobalaccel /component/krunner org.kde.kglobalaccel.Component.invokeShortcut 'run command'
+bindsym $mod+shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1

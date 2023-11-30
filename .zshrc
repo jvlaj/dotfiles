@@ -1,8 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-set -o vi
-
 export EDITOR="nvim"
 
 # Path to your oh-my-zsh installation.
@@ -74,7 +72,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gh vi-mode npm fd ag fzf gnu-utils tmux ripgrep python npm brew macos iterm2)
+plugins=(git gh vi-mode npm fd ag fzf gnu-utils tmux ripgrep python npm )
 
 export MANPATH="/usr/local/man:$MANPATH"
 if [ -x nvim ]; then
@@ -88,10 +86,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export MANPATH="/usr/local/man:$MANPATH"
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -107,13 +103,20 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
 
-alias emacs='$(/Applications/Emacs.app/Contents/MacOS/Emacs --socket-name=Emacs --no-wait --create-frame "$@")'
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [[ $(uname) == "Darwin" ]];  then
+	plugins+=(macos brew iterm2)
+	alias emacs='$(/Applications/Emacs.app/Contents/MacOS/Emacs --socket-name=Emacs --no-wait --create-frame "$@")'
+	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if [ $(ps ax | grep "[s]sh-agent" | wc -l) -eq 0 ] ; then
+    eval $(ssh-agent -s) > /dev/null
+    if [ "$(ssh-add -l)" = "The agent has no identities." ] ; then
+        # Auto-add ssh keys to your ssh agent
+        # Example:
+        # ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
+    fi
+fi
+
+source ~/.aliases
